@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>40</Address>
+  <Name>HomeGenie Leds</Name>
+  <Group>Raspberry Sharp</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// A "return true;" statement at any point of this code block, will cause the program to run.
+// For manually activated program, just leave a "return false" statement here.
+
+return true;
+</ScriptCondition>
+  <ScriptSource>// Initially turn the leds off
+var systemleds = new PinConfiguration[] { 	ConnectorPin.P1Pin11.Output().Name("ActivityLed").Disable(), 
+                                         	ConnectorPin.P1Pin13.Output().Name("ReadyLed").Disable() };
+// 
+
+
+// 
+using (var connection = new GpioConnection(systemleds))
+{  
+	When.ModuleParameterChange( (module, parameter) =&gt; {
+      	if (parameter.Name != "Meter.Watts")
+        {
+    	    connection.Blink("ActivityLed", 10); // 100 ms
+        }
+      	return null;
+	});
+  
+  	while(Program.IsEnabled) 
+    {
+      	connection.Toggle("ReadyLed");
+	    Pause(.5); // 500 ms on
+    }
+}
+</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features />
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

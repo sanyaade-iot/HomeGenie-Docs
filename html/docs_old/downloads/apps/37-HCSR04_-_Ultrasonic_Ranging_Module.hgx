@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>37</Address>
+  <Name>HCSR04 - Ultrasonic Ranging Module</Name>
+  <Group>Raspberry Sharp</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// this Setup delegate will be executed once, when the program is enabled
+Program.Setup(()=&gt;
+{
+  // set the widget that will display this program data (the distance).
+  // the builtin 'homegenie/generic/sensor' widget, 
+  // will display all parameters starting with Sensor.*
+  Program.AddControlWidget("homegenie/generic/sensor");
+  
+  // initialize program parameters
+  Program.Parameter("Sensor.Distance").Value = "";
+  Program.Parameter("Sensor.StatusMessage").Value = "";
+  
+  Program.AddFeature("Dimmer", "HomeGenie.SonicControl", "Control with distance sensor");
+
+  
+  // it makes program to respond to webservices calls:
+  //     http:///api/EmbeddedSystems.Raspberry/HCSR04/Sensor.Distance
+  //When.WebServiceCallReceived("EmbeddedSystems.Raspberry/HCSR04/Sensor.Distance", ( option ) =&gt; 
+  //{
+  //  return "{ 'ResponseValue' : '" + Program.Parameter("Sensor.Distance").Value + "' }";
+  //}); 
+}); // end program setup
+return true; // execute the 'Code to Run'</ScriptCondition>
+  <ScriptSource>// example code adapted from https://github.com/raspberry-sharp/
+//
+var triggerPin = ConnectorPin.P1Pin03.ToProcessor();
+var echoPin = ConnectorPin.P1Pin07.ToProcessor();
+
+var _attentiondistance = 15.0; // centimeters
+
+var state = "WAITING";
+var lastsecondavg = 0d;
+var lastsecondticks = 0d;
+var stateswitchts = DateTime.Now;
+var statesetpoint = 0d;
+var currentcolor = 0;
+
+
+string[] colors = new string[6];
+colors[0] = "0.9718954248365984,0.9636363636363637,0.9821428571428572"; // Violet
+colors[1] = "0.0006535947712412357,1,1"; // Red
+colors[2] = "0.13594771241830017,1,1"; // Yellow
+colors[3] = "0.3130718954248361,1,1"; // Green
+colors[4] = "0.48562091503268334,1,1"; // Cyan
+colors[5] = "0.65228758169935,1,1"; // Blue
+
+
+Func &lt;double&gt; AverageDistance = (()=&gt;{
+  	return (lastsecondticks == 0 ? 0 : (lastsecondavg / lastsecondticks));
+});
+
+Func&lt;string, bool&gt; SwitchState = ((string s)=&gt;{
+  	stateswitchts = DateTime.Now;
+  	lastsecondavg = AverageDistance();
+  	lastsecondticks = 1;
+  	state = s;
+  	return true;
+});
+
+Func &lt;double, double&gt; AddValue = ((double v)=&gt;{
+  	if (AverageDistance() - v &gt; 2) // maximum gap
+    {
+        lastsecondavg = v;
+        lastsecondticks = 1;
+      	//stateswitchts = DateTime.Now;
+    }
+    lastsecondavg += (double)v;
+    lastsecondticks++; 
+  	return AverageDistance();
+});
+
+SwitchState("WAITING");
+
+using (var connection = new HcSr04Connection(triggerPin, echoPin))
+{
+    while (Program.IsEnabled)
+    {
+          
+        try
+        {
+		    var distance = connection.GetDistance() * 100;
+		    Program.Parameter("Sensor.Distance").Value = String.Format("{0:0.0}", distance);
+		    Program.Parameter("Sensor.StatusMessage").Value = "OK";
+//          	Console.WriteLine ( state + " ==&gt; " + AverageDistance() ) ;
+          
+          	var cmduration = new TimeSpan(DateTime.Now.Ticks - stateswitchts.Ticks).TotalMilliseconds;
+          
+          	AddValue( (double)distance );
+
+            switch (state)
+            {
+              case "WAITING":
+                  if (AverageDistance() &lt; _attentiondistance &amp;&amp; cmduration &gt; 300)
+                  {
+                    SwitchState("LISTENING");
+                  }
+              break;
+              case "LISTENING":
+                  if (AverageDistance() &lt; _attentiondistance &amp;&amp; cmduration &gt; 300) 
+                  {
+                      Modules.WithFeature("HomeGenie.SonicControl").Toggle();
+                      //
+                      if (Modules.WithFeature("HomeGenie.SonicControl").IsOn)
+                      {
+                        SwitchState("TOGGLE");
+                      }
+                      else
+                      {
+                        Pause(.5);
+                        SwitchState("WAITING");
+                      }
+                  }
+              break;
+              case "TOGGLE":
+                  if (AverageDistance() &lt; _attentiondistance &amp;&amp; cmduration &gt; 300)
+                  {
+                    statesetpoint = 0;
+                    SwitchState("LEVEL");
+                  }
+                  else if (cmduration &gt; 300)
+                  {
+                    SwitchState("WAITING");
+                  }
+              break;
+              case "LEVEL":
+                  if ((double)distance &lt; _attentiondistance + 15.0 &amp;&amp; cmduration &gt; 100)
+                  {
+                    if (statesetpoint == 0) statesetpoint = AverageDistance();
+                    //
+                    var level = (Math.Floor((AverageDistance() - statesetpoint)) * 10);
+                    // normalize to accepted distance interval (0-100)
+                    if (level &lt; 0) 
+                    { 
+                      level = 0;
+                    }
+                    else if (level &gt; 100) level = 100;
+                    //
+//Console.WriteLine("* " + (int)level);
+                    currentcolor++;
+                    if (currentcolor &gt; 5) currentcolor = 0;
+//Console.WriteLine( "   --&gt;   LEVEL --&gt;   " + currentcolor);     
+                    Modules.WithFeature("HomeGenie.SonicControl").Command("Control.ColorHsb").Set(colors[currentcolor]);
+                    Pause(0.5);
+                    //
+                    SwitchState("LEVEL");                          	
+                  } 
+                  else if (cmduration &gt; 1000)
+                  {
+                    statesetpoint = 0;
+                    SwitchState("WAITING");
+                  }
+              break;
+            }
+          //                
+          Pause(0.25);
+          
+          	/*if ((distance * 100) &lt; 50)
+            {
+                // Initially turn the leds off
+                var systemleds = new PinConfiguration[] { 	ConnectorPin.P1Pin11.Output().Name("ActivityLed").Disable() };
+                using (var connection2 = new GpioConnection(systemleds))
+                {  
+                  connection2.Blink("ActivityLed", distance * 2000); // 100 ms
+                }                  
+            }*/
+        }
+        catch
+        {
+            Program.Parameter("Sensor.Distance").Value = String.Format("{0:0.0}", (new Random().NextDouble() * 100));
+            Program.Parameter("Sensor.StatusMessage").Value = "Warning: HcSr04 Module Timeout. Reported value is randomly generated.";
+            // sleep some more if there was an error
+            //Pause ( 4 );
+        }
+      
+        Pause( .2 ); // 1 second interval between parameter updates
+    } 
+}</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>false</IsEvaluatingConditionBlock>
+  <Features>
+    <ProgramFeature>
+      <ForDomains />
+      <ForTypes>Dimmer</ForTypes>
+      <Property>HomeGenie.SonicControl</Property>
+      <Description>Control with distance sensor</Description>
+    </ProgramFeature>
+  </Features>
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

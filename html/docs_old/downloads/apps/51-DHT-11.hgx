@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>51</Address>
+  <Name>DHT-11</Name>
+  <Group>Raspberry Sharp</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// A "return true;" statement at any point of this code block, will cause the program to run.
+// For manually activated program, just leave a "return false" statement here.
+Program.Setup(()=&gt;
+{
+  
+  // set the widget that will display this program data (the temperature,luminance).
+  Program.AddControlWidget("homegenie/generic/temperature");
+  
+  // set a configuration parameter
+  //Program.AddInputField("PollFrequency", "10", "Pause between updates (seconds)");
+  
+  // initialize program parameters
+  Program.Parameter("Sensor.Humidity").Value = "";
+  Program.Parameter("Sensor.Temperature").Value = "";
+  Program.Parameter("Sensor.TemperatureF").Value = "";
+  
+  // it makes program to respond to webservices calls:
+  // - http://&lt;hg_address&gt;/api/EmbeddedSystems.Raspberry/MCP3008/Sensor.Temperature
+  When.WebServiceCallReceived("EmbeddedSystems.Raspberry/DHT11/Sensor.Temperature", ( args ) =&gt; 
+  {
+    return "{ 'ResponseValue' : '" + Program.Parameter("Sensor.Temperature").Value + "' }";
+  });
+  // - http://&lt;hg_address&gt;/api/EmbeddedSystems.Raspberry/MCP3008/Sensor.Luminance
+  When.WebServiceCallReceived("EmbeddedSystems.Raspberry/DHT11/Sensor.Humidity", ( args ) =&gt; 
+  {
+    return "{ 'ResponseValue' : '" + Program.Parameter("Sensor.Humidity").Value + "' }";
+  });
+  
+}); // end program setup
+
+return true;
+</ScriptCondition>
+  <ScriptSource>//System.Threading.Thread.CurrentThread.Priority = System.Threading.ThreadPriority.Highest;
+int[] data = new int[5];
+
+while (Program.IsEnabled)
+{
+	var irpin = ConnectorPin.P1Pin7.ToProcessor();
+	MemoryGpioConnectionDriver driver = new MemoryGpioConnectionDriver();
+	//
+	driver.Allocate(irpin, PinDirection.Output);
+	driver.Write(irpin, false);
+  	Pause(0.015);
+	driver.Write(irpin, true);
+	//  
+  	driver.Allocate(irpin, PinDirection.Input);
+  	//
+    int i = 0;
+    data = new int[5];
+    int j = 0;
+    int counter = 0;
+    bool laststate = true;  
+  	//
+    // detect change and read data
+    for ( i=0; i&lt; 85; i++) {
+      counter = 0;
+      while (driver.Read(irpin) == laststate) {
+        counter++;
+        //Raspberry.Timers.HighResolutionTimer.Sleep(0.000001m);
+        if (counter == 255) {
+          break;
+        }
+      }
+      laststate = driver.Read(irpin);
+  
+      if (counter == 255) break;
+  
+      // ignore first 3 transitions
+      if ((i &gt;= 4) &amp;&amp; (i%2 == 0)) {
+        // shove each bit into the storage bytes
+        data[j/8] &lt;&lt;= 1;
+        if (counter &gt; 60)
+          data[j/8] |= 1;
+        j++;
+      }
+    }
+  	// 
+    if ((j &gt;= 40) &amp;&amp; (data[4] == ((data[0] + data[1] + data[2] + data[3]) &amp; 0xFF)) ) 
+    {
+        double f = data[2] * 9D / 5D + 32;
+     	//Console.WriteLine("\n\nHumidity = {0}.{1} %\nTemperature = {2}.{3} *C ({4} *F)\n\n", 
+        //      			data[0], data[1], data[2], data[3], f);
+  		Program.Parameter("Sensor.Humidity").Value = data[0] + "." + data[1];
+		Program.Parameter("Sensor.Temperature").Value = data[2] + "." + data[3];
+		Program.Parameter("Sensor.TemperatureF").Value = f.ToString();
+    }
+    else
+    {
+      	//Console.WriteLine(j + ") Data not good, skip\n");
+    }
+    //
+    //Console.WriteLine(data[0]);
+    //Console.WriteLine(data[1]);
+    //Console.WriteLine(data[2]);
+    //Console.WriteLine(data[3]);
+    //Console.WriteLine(data[4]);
+  	//
+  	Pause(10);
+}</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>false</IsEvaluatingConditionBlock>
+  <Features />
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

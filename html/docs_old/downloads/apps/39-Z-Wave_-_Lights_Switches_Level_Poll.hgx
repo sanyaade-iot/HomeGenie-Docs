@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>39</Address>
+  <Name>Z-Wave - Lights/Switches Level Poll</Name>
+  <Group>Features</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// this is a background app
+// so we just put initialization code here and a return true
+// to activate the background task loop
+
+// ...
+Program.Setup(()=&gt;
+{              
+	Program.AddInputField("PollInterval", "15", "Poll Interval (seconds)");
+	Program.AddFeature("HomeAutomation.ZWave", "Light,Dimmer,Switch", "HomeGenie.ZWaveLevelPoll", "Poll module level");
+});
+  
+return true;
+</ScriptCondition>
+  <ScriptSource>while(Program.IsEnabled)
+{
+  	// basic get will returns current device level 
+  	Modules.WithFeature("HomeGenie.ZWaveLevelPoll").Command("Basic.Get").IterationDelay(10).Execute();
+	// pause between each poll
+  	Pause(Program.InputField("PollInterval").DecimalValue);
+}</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features>
+    <ProgramFeature>
+      <ForDomains>HomeAutomation.ZWave</ForDomains>
+      <ForTypes>Light,Dimmer,Switch</ForTypes>
+      <Property>HomeGenie.ZWaveLevelPoll</Property>
+      <Description>Poll module level</Description>
+    </ProgramFeature>
+  </Features>
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>26</Address>
+  <Name>Philips Hue Bridge</Name>
+  <Group>Devices and Things</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// A "return true;" statement at any point of this code block, will cause the program to run.
+// For manually activated program, just leave a "return false" statement here.
+
+Program.Setup(()=&gt;{
+
+  	Program.AddInputField("BridgeAddress", "192.168.0.?", "Philips Hue Bridge IP Address");
+  	Program.AddInputField("BridgeUsername","newdeveloper", "Philips Hue Bridge API username");
+  	//
+  	// Create 5 virtual modules with the domain "HomeAutomation.PhilipsHue" and with address from 1 to 5
+  	// "Dimmer" is the type and "GenericColorLight" is the widget to be used to display the virtual module
+  	// See directory "html/pages/control/widgets/" for widget list
+  	Program.AddVirtualModules("HomeAutomation.PhilipsHue", "Dimmer", "homegenie/generic/colorlight", 1, 5);
+  
+});
+
+return true;
+</ScriptCondition>
+  <ScriptSource>Func&lt;string, string, bool&gt; bridgeapicall = (string lightnum, string jsonargs) =&gt; 
+{
+	string webserviceurl = "http://" + 
+  			Program.InputField("BridgeAddress").Value + "/api/" + 
+  			Program.InputField("BridgeUsername").Value + "/lights/" + lightnum + "/state";
+	Net.WebService(webserviceurl).Put( jsonargs ).Call();
+  	return true;
+};
+
+// - http://&lt;hg_address&gt;/api/HomeAutomation.PhilipsHue/...
+When.WebServiceCallReceived("HomeAutomation.PhilipsHue", ( args ) =&gt; 
+{
+    string[] reqs = ((string)args).Split('/');
+    //string domain = reqs[0];
+    try
+    {
+      string lightnumber = reqs[1];
+      string command = reqs[2];
+      string parameter = ""; if (reqs.Length &gt; 3) parameter = reqs[3];
+      //
+      var module = Modules.InDomain("HomeAutomation.PhilipsHue").WithAddress(lightnumber).Get();
+      //
+      switch(command)
+      {
+		// eg. http://&lt;hg_address&gt;/api/HomeAutomation.PhilipsHue/&lt;light_number&gt;/Control.On
+        case "Control.On":
+	        bridgeapicall(lightnumber, "{ \"on\" : true }");
+        	module.Parameter("Status.Level").Value = "1";
+        	break;
+		// eg. http://&lt;hg_address&gt;/api/HomeAutomation.PhilipsHue/&lt;light_number&gt;/Control.Off
+        case "Control.Off":
+    	    bridgeapicall(lightnumber, "{ \"on\" : false }");
+        	module.Parameter("Status.Level").Value = "0";
+        	break;
+        case "Control.Level":
+    	    bridgeapicall(lightnumber, "{ \"bri\" : " + ((int)(double.Parse(parameter) * 2.5)).ToString() + " }");
+        	module.Parameter("Status.Level").Value = (double.Parse(parameter) / 100D).ToString();
+        	break;
+		// eg. http://&lt;hg_address&gt;/api/HomeAutomation.PhilipsHue/&lt;light_number&gt;/Control.ColorHsb/&lt;hue&gt;,&lt;sat&gt;,&lt;bri&gt;
+        case "Control.ColorHsb":
+        	string[] values = parameter.Split(',');
+    	    bridgeapicall(lightnumber, "{ \"on\" : true" + 
+                          ", \"hue\" : " + (int)(double.Parse(values[0], System.Globalization.CultureInfo.InvariantCulture) * 65536) + 
+                          ", \"sat\" : " + (int)(double.Parse(values[1], System.Globalization.CultureInfo.InvariantCulture) * 255) + 
+                          ", \"bri\" : " + (int)(double.Parse(values[2], System.Globalization.CultureInfo.InvariantCulture) * 255) + " }");
+        	module.Parameter("Status.Level").Value = (double.Parse(values[2], System.Globalization.CultureInfo.InvariantCulture)).ToString();
+        	module.Parameter("Status.ColorHsb").Value = parameter;
+        	break; 
+      }
+      //
+      return "{ 'ResponseValue' : 'OK' }";    
+    } catch { }
+    return "{ 'ResponseValue' : 'ERROR' }";
+});
+
+Program.GoBackground();
+</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features />
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

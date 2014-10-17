@@ -1,0 +1,1168 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+    	HomeGenie
+    </title>
+    
+    <!-- jquery & co css includes -->
+    <!--link rel="stylesheet" type="text/javascript" href="js/jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js" / -->
+    <link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.3.0/jquery.mobile.structure-1.3.0.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.3.0/jquery.mobile.theme-1.3.0.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css" /> 
+
+    <link rel="stylesheet" href="css/my.css" />
+    <style type="text/css">
+    .grid-row-medium 
+    {
+        height:70px;
+    }
+    .ui-block-double
+    {
+        width:200%;
+    }
+    .csharp-mini
+    {
+        white-space: pre;
+        font-family: monospace, Courier;
+        font-size: 8pt;
+    }
+    </style>
+        
+    <!-- jquery & co framework includes -->
+    <script src="js/jquery.1.8.0.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.1.8.23.min.js"></script>
+    
+    <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="js/jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.simpledialog2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.simpledialog.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>	
+    <script language="javascript" type="text/javascript" src="js/json2.js"></script>	
+
+    <!-- App Custom Javascript --><!-- TODO: check wheter this can be deprecated -->
+    <script src="js/my.js">
+    </script>
+
+    <!-- JQuery Snippet -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.snippet.min.css" />
+    <script type="text/javascript" src="js/jquery.snippet.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/jqm-demos.css">    
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("pre.csharp").snippet("csharp", { style: "kwrite", transparent: false, showNum: true });
+            }, 2000);
+            $('a.anchor').click(function (e) {
+                obj = e.target;
+                str = String(obj);
+                var id = str.substring(str.lastIndexOf('#'));
+                $.mobile.silentScroll($(id).offset().top - 50);
+                e.preventDefault();
+            });
+        });
+    </script>
+</head> 
+<body> 
+
+
+
+<div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-fixed-page1">
+
+    <div data-role="header" data-theme="f" data-position="fixed">
+        <h1>HomeGenie - User Guide</h1>
+        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+    </div><!-- /header -->
+
+    <div data-role="content" class="jqm-content">
+
+    	<h1>Automation Programs</h1>
+
+
+		<h2>Introduction</h2>
+        <p>
+        Automation Programs are a powerful feature of HomeGenie that let you customize and automate every aspect of your HA system.<br />
+        In HomeGenie there are two types of automation programs: <b>Wizard</b> and <b>CSharp</b>.<br />
+        </p>
+
+
+		<h2>Wizard Scripts</h2>
+        <p>
+            A Wizard Script do not require any programming knowledge. Every commands sequence can be created with a few clicks/taps on the screen.
+        </p>
+        <p>
+            All we have to do is to choose one or more conditions and a determine what instructions are to be executed when conditions are met. 
+        </p>
+        <br />
+        <div align="center"><img src="images/docs/wizard_example.png" width="80%" /></div>
+        <br />
+        <p>The program in the above picture, will turn light A8 on and off twice, every exact hour (current time minute is 0).</p>
+        <p>When adding a new condition or a new instruction statement, a popup window will first ask to choose the <i>context</i> (aka <i>domain</i>) of the statement.<br />
+            The context can be one of the following:
+            <ul>
+                <li><b>HomeGenie</b><br />for using automation properties and methods implemented in <i>HomeGenie Automation API</i></li>
+                <li><b>X10</b><br />for operating on X10 devices</li>
+                <li><b>ZWave</b><br />for operating on ZWave devices</li>
+            </ul>
+        </p>
+        <p>
+            After choosing the context, the wizard will list other available options for the selected value.<br />
+            <br />
+            The following table shows an example condition: a wizard condition is formed by the context (HomeGenie), 
+            the subject of the evaluation (Automation), the comparison property (DateMinute), 
+            the comparison operator (Equals) and the comparison value (0):<br />
+            <div class="ui-grid-d">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-a">Context</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-a">Subject</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-a">Property</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-a">Operator</p></div>
+                <div class="ui-block-e"><p class="ui-bar ui-bar-a">Value</p></div>
+            </div>
+            <div class="ui-grid-d">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">HomeGenie</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">Automation</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">DateMinute</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c">Equals</p></div>
+                <div class="ui-block-e"><p class="ui-bar ui-bar-c">0</p></div>
+            </div>
+            <p>this condition will be true when the current time minute is zero (and so every exact hour).</p>
+        </p>
+        <p>
+            Another example condition with a different context could be:<br />
+            <div class="ui-grid-d">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-a">Context</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-a">Subject</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-a">Property</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-a">Operator</p></div>
+                <div class="ui-block-e"><p class="ui-bar ui-bar-a">Value</p></div>
+            </div>
+            <div class="ui-grid-d">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">ZWave</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">4 (dimmer)</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Meter.Watts</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c">Greater Than</p></div>
+                <div class="ui-block-e"><p class="ui-bar ui-bar-c">20</p></div>
+            </div>
+            <p>
+                the above condition will be true when the ZWave node 4 will report a metering value greater than 20 watts.
+            </p> 
+            <p>
+                If more than one condition is added, then the program intructions will be executed only if all conditions are met at the same time.
+            </p> 
+        </p>
+        <p>
+            For a complete list of available options for a condition or instruction block, see the following tables listing:
+            <br />
+            <h5>Wizard - Conditions Properties</h5>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-a">Context</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-a">Subject</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-a">Property</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-a">Return Value</p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-e">HomeGenie</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">Automation</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Meter.WattsCounter</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns total watts counter
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Meter.WattsLoad</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current total watts load
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateDay</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current day
+                 </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateMonth</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current date month number (1=January .. 12=December)
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateYear</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current date year (four digits)
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateDayOfWeek</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current day of week number (0=Sunday .. 6=Saturday)
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateHour</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current hour (00 - 23)
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Programs.DateMinute</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    returns current minute (00 - 59)
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-e">X10</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&lt;unit_code&gt;</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Status.Level</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Meter.Watts</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-e">ZWave</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&lt;node_id&gt;</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Status.Level</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Meter.Watts</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Sensor.Generic</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Sensor.MotionDetect</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Sensor.Temperature</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Sensor.Luminance</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+                <div class="ui-block-c"><p class="ui-bar ui-bar-c">Sensor.Humidity</p></div>
+                <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                    -
+                </p></div>
+            </div>
+
+
+
+            <h5>Wizard - Conditions Operators</h5>
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><p class="ui-bar ui-bar-a">Operator</p></div>
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">Less Than</p></div>
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">Equals</p></div>
+                <div class="ui-block-a"><p class="ui-bar ui-bar-c">Greater Than</p></div>
+            </div>
+        </p>
+
+
+        <h5>Wizard - Instructions Commands</h5>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Context</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a">Subject</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-a">Command</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-a">Description</p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-e">HomeGenie</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">Automation</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Program.Pause</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                (decimal) pause program execution for a given number of seconds
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Program.Repeat</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                (integer) loop istructions execution for a given number of times
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Groups.LightsOn</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                (string) turn all lights of a given group on
+                </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Groups.LightsOff</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                (string) turn all lights of a given group off
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-e">X10</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&lt;unit_code&gt;</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.On</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.Off</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.Level</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-e">ZWave</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&lt;node_id&gt;</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.On</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.Off</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+        <div class="ui-grid-c">
+            <div class="ui-block-a"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c">&nbsp;&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;"</p></div>
+            <div class="ui-block-c"><p class="ui-bar ui-bar-c">Control.Level</p></div>
+            <div class="ui-block-d"><p class="ui-bar ui-bar-c" style="font-size:7pt;height:29px">
+                -
+            </p></div>
+        </div>
+
+        <br />
+
+		<h2>CSharp Programs</h2>
+        <p>
+        A CSharp program use the power of C# programming language and HomeGenie functions to create programs that can handle very complex automation tasks.<br />
+        CSharp programs can also communicate with the outside world (eg. gathering weather and traffic infos from internet web services, communicate with other connected devices, send email).
+        </p>
+        <br />
+        <div align="center"><img src="images/docs/csharp_example.png" width="80%" /></div>
+        <br />
+        <p>
+        As seen for Wizard programs, C# programs consist of two blocks of code. The <i>Condition Trigger</i> code and the <i>Program</i> code to run.
+        The condition trigger is a block of c# code that must return true or false. If returning true, then the program code is run.
+        <br />
+
+        </p>
+
+<h5>Example Condition Trigger code</h5>
+<pre class="csharp">
+// A "return true;" statement at any point of this code block, will cause the program to run.
+// For manually activated program, just leave a "return false" statement here.
+return Modules.WithName("HSM100 Sensor").MotionDetected;
+</pre>
+
+<h5>Example Program Code to run</h5>
+<pre class="csharp">
+Modules.InGroup("Living Room").OfDeviceType("Light,Dimmer").On();
+Pause(15.0);
+Modules.InGroup("Living Room").OfDeviceType("Light,Dimmer").Off();
+</pre>
+
+        <p>
+        The program above will turn on for 15 seconds and then off, all lights in the living room whenever a motion is detected from sensor with name "HSM100 Sensor".
+        </p>
+        <p>
+        A C# program also take advantage of some helper classes that are part of HomeGenie automation api and that make easier handling common automation tasks.
+        </p>
+        <h3>Automation API - Helper Classes</h3>
+        <p></p>
+
+        <h4><b>Modules</b> Helper Class</h4>
+        <p>
+        This class is used for managing automation modules. It has methods and properties for selecting and controlling modules.
+        </p>
+        <h5>Selecting modules</h5>
+        <p>
+        </p>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Selector Method</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a">Usage Example</p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">WithName( "<font style="font-size:9pt;color:gray">&lt;comma_separated_names&gt;</font>" )</font>
+                    <br /><font style="font-size:9pt;color:gray">selects modules by names</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// turn ALL modules with name "Ceiling Light" on
+Modules.WithName("Ceiling Light").On();
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">WithAddress( "<font style="font-size:9pt;color:gray">&lt;comma_separated_addresses&gt;</font>" )</font>
+                    <br /><font style="font-size:9pt;color:gray">selects modules by addresses</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// turn off modules with address A4 and A7
+Modules.WithAddress("A4,A7").Off();
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">OfDeviceType( "<font style="font-size:9pt;color:gray">&lt;comma_separated_types&gt;</font>" )</font>
+                    <br />
+                    <font style="font-size:9pt;color:gray">
+                    selects modules by device types
+                    </font>
+                    <br />
+                    <font style="font-size:9pt;">
+                    values: "Light", "Dimmer", "Switch", "Sensor"
+                    </font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// dim all modules of type "dimmer" or "light" to 50%
+Modules.OfDeviceType("Light,Dimmer").SetLevel("50");
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">InGroup( "<font style="font-size:9pt;color:gray">&lt;comma_separated_groups&gt;</font>" )</font>
+                    <br /><font style="font-size:9pt;color:gray">selects modules by groups</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// set all dimmers in "Living Room" group to 30%
+Modules .InGroup("Living Room")
+        .SetLevel("30");
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">InDomain( "<font style="font-size:9pt;color:gray">&lt;comma_separated_domains&gt;</font>" )</font>                        
+                    <br />
+                    <font style="font-size:9pt;color:gray">selects modules by domains</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// turn off all X10 lights
+Modules .InDomain("HomeAutomation.X10")
+        .OfDeviceType("Light").Off();
+                </span>
+            </p></div>
+        
+        </div>
+
+
+
+        <h5>Controlling modules</h5>
+        <p>
+        </p>
+        <div class="ui-grid-c">
+        
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Command Method</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a ui-block-double">Usage Example</p></div>
+        
+        </div>
+        <div class="ui-grid-c">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">On()</font>
+                    <br /><font style="font-size:9pt;color:gray">turn on selected modules</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium ui-block-double">
+                <span class="csharp-mini">// turn ALL modules with name "Ceiling Light" on
+Modules.WithName("Ceiling Light").On();
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-c">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">Off()</font>
+                    <br /><font style="font-size:9pt;color:gray">turn off selected modules</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium ui-block-double">
+                <span class="csharp-mini">// turn module with address "A4" off
+Modules.WithAddress("A4").Off();
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-c">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">Toggle()</font>
+                    <br /><font style="font-size:9pt;color:gray">toggles selected modules</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium ui-block-double">
+                <span class="csharp-mini">// toggles all modules in the group "Study"
+Modules.InGroup("Study").OfDeviceType("Light").Toggle();
+                </span>
+            </p></div>
+        
+        </div>
+
+
+
+
+
+        <h5>Querying modules properties</h5>
+        <p>
+        For querying a value from modules, following properties are available.
+        Note that when more than one modules is selected, a property may returns the average value.<br />
+        </p>
+
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Property</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a ui-block-double">Description</p></div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">Level</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="color:green">double</font>
+                    <font style="font-size:9pt;color:gray">value indicating average % level of selected modules.</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">IsOn</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">bool</font>
+                    <font style="font-size:9pt;color:gray">value indicating if at least one of selected modules is on.</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">IsOff</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">bool</font>
+                    <font style="font-size:9pt;color:gray">value indicating if all selected modules are off.</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">Alarmed</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">bool</font>
+                    <font style="font-size:9pt;color:gray">value indicating if at least one of selected modules is alarmed.</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">MotionDetected</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">bool</font>
+                    <font style="font-size:9pt;color:gray">value indicating if at least one of selected modules detected motion.</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">Teperature</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">double</font>
+                    <font style="font-size:9pt;color:gray">value indicating average temperature reported by sensors</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">Luminance</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">double</font>
+                    <font style="font-size:9pt;color:gray">value indicating average luminance reported by sensors</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">Humidity</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">double</font>
+                    <font style="font-size:9pt;color:gray">value indicating average humidity reported by sensors</font>
+                </p>
+            </div>
+        
+        </div>
+        <div class="ui-grid-b">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c">
+                    <font style="color:Blue">RfRemoteData</font>
+                </p>
+            </div>
+            <div class="ui-block-b">
+                <p class="ui-bar ui-bar-c ui-block-double">
+                    <font style="font-size:8pt">[readonly]</font>
+                    <font style="color:green">string</font>
+                    <font style="font-size:9pt;color:gray">value containing raw data as received from RF remote</font>
+                </p>
+            </div>
+        
+        </div>
+
+
+
+
+<h5>Examples</h5>
+<pre class="csharp">
+
+if (Modules.InGroup("Bedroom").Temperature < 18 && Modules.InGroup("Bedroom").WithName("Heating Switch").IsOff)
+{
+    // turn on some heating here =)
+    Modules.InGroup("Bedroom").WithName("Heating Switch").On();
+}
+else if (if (Modules.InGroup("Bedroom").Temperature > 22 && Modules.InGroup("Bedroom").WithName("Heating Switch").IsOn)
+{
+    Modules.InGroup("Bedroom").WithName("Heating Switch").Off();
+}
+
+</pre>
+
+
+
+
+
+        <h5>Automation API - Direct Access</h5>
+        <p>
+        The following commands give low level access to HomeGenie Automation API.
+        These API are based on MIG SDK and allow controlling connected devices and services
+        by using a common protocol interface (that is not discussed in this document).
+        </p>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Method</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a">Usage Example</p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">Parameter( "<font style="font-size:9pt;color:gray">&lt;mig_parameter_string_value&gt;</font>" )</font>
+                    <br /><font style="font-size:9pt;color:gray">get the value of a given module parameter</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">if (Modules.Parameter("Sensor.Alarm") != "0")
+{ ... }
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">Command( "<font style="font-size:9pt;color:gray">&lt;mig_command_string_value&gt;</font>" )</font>                        
+                    <br />
+                    <font style="font-size:9pt;color:gray">set a command to be executed on selected modules</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">// brighten all X10 lights
+Modules .InDomain("HomeAutomation.X10")
+  .OfDeviceType("Dimmer").Command("Control.Bright").Execute();
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">Execute / Set ( ["<font style="font-size:9pt;color:gray">&lt;optional_parameters_string&gt;</font>"] )</font>
+                    <br /><font style="font-size:9pt;color:gray">execute selected command</font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">
+                see preceding example 
+                </span>
+            </p></div>
+        
+        </div>
+
+        <br />
+        <a href="#popupAPI" data-role="button" data-rel="popup">Show MIG string values for <i>Parameter</i> and <i>Command</i> methods</a>
+
+
+        <p>
+        The <i>Parameter</i> method returns the value (string) for a given module parameter (eg. "Status.Level" or "Sensor.Temperature"). If more than one module is selected, it will return only the value of the first selected element.
+        <br />
+        The <i>Command</i> method executes a given command (eg. "Control.On") on selected modules.         
+        </p>
+
+
+
+
+        <h5>Other methods</h5>
+        <p>
+        Modules.Reset()<br />
+        </p>
+
+
+
+        <h4><b>Net</b> Helper Class</h4>
+        <p>
+        </p>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a"><p class="ui-bar ui-bar-a">Method</p></div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-a">Usage Example</p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">MailService( <font style="font-size:9pt;color:gray">"&lt;smtp_service_address&gt;"</font> )</font>
+                    <br /><font style="font-size:9pt;color:gray"></font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">Net.MailService("smtp.myserver.com").WithCredentials("myuser", "mypass")
+    .SendMessage("me@hg.net", "mario@rossi.it;pippo@pluto.com",
+    "Hello!", "Hello from HG =)");
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">SendMessage( <font style="font-size:9pt;color:gray">"&lt;from&gt;", "&lt;recipients&gt;", "&lt;subject&gt;", "&lt;text&gt;"</font> )</font>                        
+                    <br />
+                    <font style="font-size:9pt;color:gray"></font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">
+                see example above
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">WebService( <font style="font-size:9pt;color:gray">"&lt;web_service_request_url&gt;"</font> )</font>
+                    <br /><font style="font-size:9pt;color:gray"></font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">
+         see <a href="#weather_example" class="anchor">Weather Service Call</a> example
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">GetJsonDynamic()</font>                        
+                    <br />
+                    <font style="font-size:9pt;color:gray"></font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">
+         see <a href="#weather_example" class="anchor">Weather Service Call</a> example
+                </span>
+            </p></div>
+        
+        </div>
+        <div class="ui-grid-a">
+        
+            <div class="ui-block-a">
+                <p class="ui-bar ui-bar-c grid-row-medium">
+                    <font style="color:Blue">WithCredentials( <font style="font-size:9pt;color:gray">"&lt;username&gt;", "&lt;password&gt;"</font> )</font>                        
+                    <br />
+                    <font style="font-size:9pt;color:gray"></font>
+                </p>
+            </div>
+            <div class="ui-block-b"><p class="ui-bar ui-bar-c grid-row-medium">
+                <span class="csharp-mini">
+         see  <a href="#alarm_example" class="anchor">Security Alarm Program</a> example
+                </span>
+            </p></div>
+        
+        </div>
+
+
+
+        <h4><b>AutomationStates</b> Helper Class</h4>
+        <p>
+        This class is used for sharing a set of boolean values between automation programs.
+        </p>
+
+
+        <h4><b>Program</b> Helper Class</h4>
+        <p>
+        ...
+        </p>
+
+
+
+
+		<h2>More C# example programs</h2>
+
+<a id="alarm_example"></a>
+<h4>Security Alarm Program</h4>
+<h5>Condition Trigger</h5>
+<pre class="csharp">
+// if X10 SC9000 security console is Armed Away
+// then set the automation state variable "Security.Armed" to ON
+//
+if (AutomationStates.WithName("Security.Armed").IsOff && Modules.WithAddress("F12").IsOn) // SC9000 Armed Away
+{
+    // SC9000 has been armed
+    AutomationStates.WithName("Security.Armed").On();
+    // activate flashing light of strobe sirens named "Strobe Alarm"
+    Modules.WithName("Strobe Alarm").Level = 15;  
+}
+else if (AutomationStates.WithName("Security.Armed").IsOn && Modules.WithAddress("F12").IsOff) // SC9000 Disarmed
+{
+    // SC9000 has been disarmed
+    AutomationStates.WithName("Security.Armed").Off();
+    // turn off all strobe sirens named "Strobe Alarm"
+    Modules.WithName("Strobe Alarm").Level = 0;
+}
+//
+// if automation state variable "Security.Armed" is ON,
+// then we check for sensors status 
+// that can trigger alarms and sirens.
+// in this example all motion sensors with the name "HSM100 Sensor"
+//
+if (AutomationStates.WithName("Security.Armed").IsOn && Modules.WithName("HSM100 Sensor").MotionDetected)
+{
+    // returning true will make programengine execute 
+    // the code for sending mail alert
+    // and activating the strobe siren
+	return true;	
+}
+//
+return false;
+</pre>
+
+
+<h5>Program Code</h5>
+<pre class="csharp">
+if (Modules.WithName("Strobe Alarm").Level != 100)
+{
+    // turn on all strobe sirens named "Strobe Alarm"
+ 	Modules.WithName("Strobe Alarm").Level = 100;
+    // send email
+    string smtpserver = "smtp.myserver.com";    
+    Net.MailService(smtpserver).WithCredentials("myuser", "mypass")
+        .SendMessage("me@hg.net",           //from
+        "mario@rossi.it;pippo@pluto.com",   // recipients
+        "Warning",                          // subject
+        "Security Alarm Triggered");        // message text
+}
+</pre>
+<a id="weather_example"></a>
+<h4>Weather Service Call</h4>
+<h5>Condition Trigger</h5>
+<pre class="csharp">
+// this program can be run only manually
+return false;
+</pre>
+
+<h5>Program Code</h5>
+<pre class="csharp">
+string webserviceurl = "http://api.wunderground.com/api/818a7a60268c5703/geolookup/conditions/lang:EN/q/autoip.json";
+//
+dynamic weatherdata = Net.WebService(webserviceurl).GetJsonDynamic();
+// 
+string mycity = weatherdata.location.city;
+string mycountry = weatherdata.location.country;
+string temperaturec = weatherdata.current_observation.temp_c;
+// notify read weather data (that will be also shown as a popup info in the UI)
+Program
+    .Parameter("Wheater Info")
+    .Set("&lt;font style='font-family:thaoma;color:yellow'&gt;" + mycity + " (" + mycountry + ") " + temperaturec + " C &lt;/font&gt;")
+    .Notify();
+</pre>
+
+
+        <p>
+
+        </p>
+
+        <!--a href="./" class="jqm-button" data-ajax="false" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-l" data-iconpos="left">Back to Panels</a-->
+
+		<div data-demo-html="#panel-fixed-page1" data-demo-css="true"></div><!--/demo-html -->
+
+	</div><!-- /content -->
+    <script type="text/javascript">
+        $(document).on('pagebeforeshow', '#panel-fixed-page1', function () {
+        //    $("#nav-panel").panel("open");
+        });    
+    </script>
+
+    <div data-role="footer" data-position="fixed" data-theme="f">
+    	<h4>&copy; 2012-2013 by Generoso Martello</h4>
+    </div><!-- /footer -->
+
+	<div data-role="panel" data-position-fixed="true" data-theme="a" id="nav-panel">
+
+		<ul data-role="listview" data-theme="c" class="nav-search">
+            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                <li data-role="list-divider">Automation Programs</li>
+                
+                <li><a href="#">Introduction</a></li>
+                <li><a href="#">Wizard Programs</a></li>
+                <li><a href="#">CSharp Programs</a></li>
+		</ul>
+
+	</div><!-- /panel -->
+
+    <!-- popup -->
+    <div data-role="popup" id="popupAPI" data-theme="none">
+        <div data-role="collapsible-set" data-theme="b" data-content-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:350px;">
+            <div data-role="collapsible" data-inset="false">
+                <h2>Domains</h2>
+                <ul data-role="listview">
+                    <li>HomeAutomation.X10</li>
+                    <li>HomeAutomation.ZWave</li>
+                    <li>EmbeddedSystems.RaspiGPIO</li>
+                    <li>Protocols.AirPlay</li>
+                </ul>
+            </div><!-- /collapsible -->
+            <div data-role="collapsible" data-inset="false">
+                <h2>Parameters</h2>
+                <ul data-role="listview">
+                    <li>Status.Level</li>
+                    <li>Sensor.Generic</li>
+                    <li>Sensor.Temperature</li>
+                    <li>Sensor.Luminance</li>
+                    <li>Sensor.Humidity</li>
+                    <li>Status.Alarm</li>
+                    <li>Sensor.MotionDetection</li>
+                    <li>Meter.Watts</li>
+                    <li>VirtualMeter.Watts</li>
+                    <li>Receiver.RawData</li>
+                </ul>
+            </div><!-- /collapsible -->
+            <div data-role="collapsible" data-inset="false">
+                <h2>Commands</h2>
+                <ul data-role="listview">
+                    <li>Controller.AutoReportSet</li>
+                    <li>Basic.Get</li>
+                    <li>Basic.Set</li>
+                    <li>Basic.Report</li>
+                    <li>Battery.Get</li>
+                    <li>Association.Get</li>
+                    <li>Association.Set</li>
+                    <li>Association.Remove</li>
+                    <li>ManufacturerSpecific.Get</li>
+                    <li>Config.ParameterGet</li>
+                    <li>Config.ParameterSet</li>
+                    <li>WakeUp.Get</li>
+                    <li>WakeUp.Set</li>
+                    <li>MultiLevel.Report</li>
+                    <li>Control.On</li>
+                    <li>Control.Off</li>
+                    <li>Control.Level</li>
+                    <li>Control.Bright</li>
+                    <li>Control.Dim</li>
+                </ul>
+            </div><!-- /collapsible -->
+        </div><!-- /collapsible set -->
+    </div><!-- /popup -->
+
+
+
+
+
+
+
+</div><!-- /page -->
+
+<div data-role="page" id="panel-fixed-page2">
+
+    <div data-role="header" data-theme="f">
+        <h1>Landing page</h1>
+    </div><!-- /header -->
+
+    <div data-role="content" class="jqm-content">
+
+        <p>This is just a landing page.</p>
+
+        <a href="#panel-fixed-page1" data-role="button" data-inline="true" data-mini="true" data-icon="back" data-iconpos="left">Back</a>
+
+    </div><!-- /content -->
+
+</div><!-- /page -->
+
+
+
+		
+</body>
+</html>

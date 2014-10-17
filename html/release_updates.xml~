@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r298</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>- Fixed missing synchronization in SerialPortLib.SendMessage
+    - Fixed unhandled network error in UpdateChecker</ReleaseNote>
+      <ReleaseDate>2013-11-24T20:50:00.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r298_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r299</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>- Fixed synchronization problems in SerialPortLib.SendMessage</ReleaseNote>
+      <ReleaseDate>2013-11-26T12:40:00.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r299_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>		
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r300</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>	
+    - more reliable SerialPortLib (fixes Z-Wave ZWaveLib communication errors on smaller hosts such as RaspberryPi)
+    - user defined programs have now Address >= ProgramEngine.USER_SPACE_PROGRAMS_START (=1000), all programs below this address are to be considered HG System programs
+    - added System Programs replace/add handling in HG Update Manager
+      </ReleaseNote>
+      <ReleaseDate>2013-12-01T19:45:00.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r300_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r301</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>	- fixed bug in MIG.ZWave.SetPort that was not updating serial port name sometime
+    - fixed switch widget on/off status text not updating in control popup
+    - new statistics database and engine
+    - added module filter in statistics page 
+      </ReleaseNote>
+      <ReleaseDate>2013-12-04T23:20:00.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r301_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r305</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - added last 24 hours graph to statistics
+      - fixed bug in Virtual Meter
+      </ReleaseNote>
+      <ReleaseDate>2013-12-06T12:04:12.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r301_305_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+        
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r313</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - added automatic Manufacturer Specific and NIF requests when opening the node setup page
+      - improved z-wave configuration page, now using Pepper-One device database
+      - restyled statistics and added "Today detail" graph
+      - fixed timezone bug in statistics
+      - added "Z-Wave MultiInstance" automation program for creating virtual modules associated to each instance of a m.i. device
+      </ReleaseNote>
+      <ReleaseDate>2013-12-15T18:45:11.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r306_313_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r316</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - set default condition type to 'OnTrue' when switching to csharp program type
+      - added missing "Last-modified" header to WebServiceGateway
+      - ZWaveLib: rewrote callback handling; added resend on CAN (0x18); major ZWavePort/Controller code rework
+      </ReleaseNote>
+      <ReleaseDate>2013-12-20T05:14:03.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r314_316_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r316-fix</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - fixed javascript error when entering automation program edit page
+      - updated default factory settings bundle
+      </ReleaseNote>
+      <ReleaseDate>2013-12-20T15:16:51.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r316fix_update.zip/download</DownloadUrl>
+      <RequireRestart>false</RequireRestart>
+    </ReleaseInfo>	
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r318</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - added "Smart Lights" app; improved DHT-11 app
+      - fixed device type selection not working (Windows)
+      - fixed CM15 driver bug (Windows)
+      </ReleaseNote>
+      <ReleaseDate>2013-12-22T13:23:19.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r318_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r319</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  system automation programs fixes - soft update 
+      </ReleaseNote>
+      <ReleaseDate>2013-12-23T23:25:39.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r319_update.zip/download</DownloadUrl>
+      <RequireRestart>false</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r324</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - ZWaveLib: added checksum verification against received messages (fixes occasional bad readings of reported values from nodes)
+      - fixed bug in MultiChannel switch widget that was not udating status for channels 1 and 2 
+      - some minor changes/fixes in Level Memory, Energy Saving Mode and ZWave Wake Up Notify programs
+      - some fixes in SC9000 security sensors program
+      - ZWaveLib: fixed node inclusion/exclusion bug
+      - Utility: fixed RunAsyncTask that was missing exceptions handling
+      - ZWaveLib: fixed bad temperature values reported from HSM-100
+      - ZWaveLib: fixed occasional "Control.Toggle" desync
+      - ZWaveLib: added spin wait and ManualResetEvent for waiting callback ACK of last command before sending next one
+      - added Program.Play("wave_url") method to ProgramHelper to play wave audio files</ReleaseNote>
+      <ReleaseDate>2013-12-28T15:54:01.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r319_324_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+      
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r326</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - added Fahrenheit temp value display to Weather Widget (contributed by lancebot http://sourceforge.net/p/homegenie/discussion/requestsandtodo/thread/c4752b10/#89b3)
+      - removed AirPlay (replaced by new UPnP interface)
+      - added Media Server and Media Receiver control widgets
+      - added UPnP MIG Interface implementing UPnP ControlPoint for UPnP devices : Light, Media Server, Media Receiver
+      - ZWaveLib: added Scene Activation cc support (routed as Sensor.Generic parameter)
+      - ZWaveLib: fixed SwitchBinary and SwitchMultilevel reports, that are now being processed correctly
+      - added TcpClient helper class</ReleaseNote>
+      <ReleaseDate>2014-01-24T23:21:11.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r324_326_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+      
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r327</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - minor bugfix to r326 </ReleaseNote>
+      <ReleaseDate>2014-02-02T20:57:12.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r326_327_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+      
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r329</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - APE: fixed AddControlWidget bug 
+      - NetHelper: added support for ssl and custom port number for mail service (dummy certificate validation - be warned =))
+      - XTenLib: added transceived house codes settings for CM15 interface
+      - MIG: added preliminary code for supporting HTTPS in WebServiceGateway (work in progress)
+      - MIG: replaced synchronous web requests processing in flavour of asynchronous ones; this should fix occasional webservice hang issue 
+      - added fibaro rgbw app and widget (contributed by DaniMail)</ReleaseNote>
+      <ReleaseDate>2014-02-09T21:40:48.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r327_329_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+      
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r333</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - HGService: added automatic cleanup of orphan/deleted Z-Wave modules
+      - ZWaveLib: fixed major bug in node adding / removing
+      - Automation: minor changes to Z-Wave MultiChannel and Smart Lights automation programs</ReleaseNote>
+      <ReleaseDate>2014-02-18T00:58:22.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r329_333_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+      
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r345</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>PLEASE READ CAREFULLY:
+    r345 is a major HG update.
+    - Backup your current configuration
+    - Upgrade HG
+    - Remove systemconfig.xml file from your backup archive
+    - Restore your configuration
+    Due to changes of systemconfig.xml file, the update might fail
+    unless you remove this file from your backup config.
+    You will have to enable interfaces manually after restoring.
+    The upgrade system is still very unstable. Please report any problem you encountered.
+    Consider also reinstalling HG r345 from scratch.</ReleaseNote>
+        <ReleaseDate>2014-03-02T16:55:08.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r333_345_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>	
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r350</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>  - Automation: Added Python, Ruby and Javascript languages for scripting HG Automation Engine
+    - ZWaveLib: added support for Hail Command Class (contributed by miket)
+    - Fixed bug in loading new automation programs after hg restart</ReleaseNote>
+        <ReleaseDate>2014-03-13T03:13:37.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r345_350_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>     
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r351</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>  - General better memory and multi-threading management using ThreadPool
+        - Fixed: enabling a program after disable was not executing Program.Setup delegate</ReleaseNote>
+        <ReleaseDate>2014-03-17T07:21:41.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r350_351_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r352</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>  - fixed "Collection Modified" error in VirtualMeter that was causing HG to stop
+        - small fixes to some configuration files and en/it locales
+        - removed locking in TsList collection (going to be replaced by standard List)</ReleaseNote>
+        <ReleaseDate>2014-03-26T22:25:02.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r350_351_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r352</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>  - fixed "Collection Modified" error in VirtualMeter that was causing HG to stop
+        - small fixes to some configuration files and en/it locales
+        - removed locking in TsList collection (going to be replaced by standard List)
+        - removed unused OpenKinectLib
+        - fixed errors in building HG solution under Xamarin Studio and Monodevelop</ReleaseNote>
+        <ReleaseDate>2014-03-26T22:25:02.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r351_352_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r358</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>  - Updated RaspberrySharp-IO library that is now including support for PCA9685 (http://www.adafruit.com/products/815)
+        - UI: added jkUtils SunCalc widget (contributed by Jan)
+        - UI: new stacked events popup
+        - UI: added real time events via persistent http connection using EventSource
+        - UI: deprecated event and modules polling
+        - APE: optimized automation program threads management
+        - UPnP interface is now disabled on factory settings due to suspect UPnP library instability
+        - Updated Jint engine library to 2.1.0
+        - added RealTime.EventStream api call to Logging handler
+        - SerialPortLib: wrapped MessageReceived event in an high priority thread</ReleaseNote>
+        <ReleaseDate>2014-04-02T15:08:39.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r352_358_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>      
+      
+      <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Name>HomeGenie</Name>
+        <Version>1.00 beta r359</Version>
+        <Description>Latest public release.</Description>
+        <ReleaseNote>NOTE: DISABLE LOGGING BEFORE UPDATING
+    - Fixed bug in Toggle functionality that was causing desync in Status.Level event</ReleaseNote>
+        <ReleaseDate>2014-04-04T17:28:02.0000Z</ReleaseDate>
+        <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r358_359_update.zip/download</DownloadUrl>
+        <RequireRestart>true</RequireRestart>
+      </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r364</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - Minor UI fixes and enhancements
+  - Added level slider to Shutter widget and inverted open/close logic
+  - Added system status led in the upper right corner (by clicking it opens the events log browser)
+  - Fixed modules cleanup on program/interface disable
+  - Added compile error display for Javascript, Ruby and Python too
+  - Fixed bug in Security Alarm System
+  - Added automatic compile when importing a CSharp program
+  - Added Program.Run instruction to Wizard scripts
+  - Added Program.Status events
+  - Fixed bugs in programs module and virtual modules update
+  - Improved MCP23017 program now supporting both output and input modes
+  - Added Raspberry Pi GPIO Modules program supporting both output and input modes
+  - Deprecated Raspberry Pi GPIO system interface
+  - Misc minor fixes</ReleaseNote>
+      <ReleaseDate>2014-04-12T13:50:45.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r359_364_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>      
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r366</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - Added Alcatel Y800Z SMS Notify program 
+  - Improved Security Alarm System: run automation programs/scenarios when armed/disarmed/triggered
+  - New Dimmer and Shutter widgets (Shutter is also now supporting Scheduling ON/OFF features)
+  - Some code improvements to Raspberry Pi automation programs
+  - Some fixes to Program Source Code Editor</ReleaseNote>
+      <ReleaseDate>2014-04-19T10:42:04.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r364_366_update.zip/download</DownloadUrl>
+      <RequireRestart>false</RequireRestart>
+    </ReleaseInfo>
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r368</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>- backup restore now sets original enabled/disabled status of programs (system programs too)
+  - fixed bug in interface enable/disable and disconnect/connect both in ZWaveLib and XTenLib
+  - fixed bug in modules list update after changing interface setting (eg. X10 house codes)
+  - major XTenLib code rework in PCL receive function: now properly supporting extended receive
+  - fixed major bug in Wizard Script comparison operator
+  - fixed disappering widgets bug
+  - added "trasitiontime" parameter to Philips Hue Widget</ReleaseNote>
+      <ReleaseDate>2014-04-22T11:53:11.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r366_368_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r370</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - fixed occasional error when adding a module to a group
+  - optimized module saving in group modules page
+  - deprecated usage of WCF in HomeGenieService and HomeGenieServiceManager (win)
+  - completed new system update manager
+  - some more fixes/improvements in XTenLib
+  - rewrote UpdateChecker, now with more logging and no need to spawn external updater process
+  - deprecated external updater process (HomeGenieUpdater)</ReleaseNote>
+      <ReleaseDate>2014-04-25T15:36:47.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r368_370_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+      <UpdateBreak>true</UpdateBreak>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r371</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>[FIX r371 missing files in update]
+  - Automation: fixed missing DeviceType update after AddVirtualModule
+  - ZWave: fixed missing modules update after interface initialization, also added discovery button and more logging to the UI</ReleaseNote>
+      <ReleaseDate>2014-04-28T08:39:59.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r370_371_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r372</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>Intermediate update package for upgrading to r372</ReleaseNote>
+      <ReleaseDate>2014-05-13T00:11:20.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r371_372i_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+      <UpdateBreak>true</UpdateBreak>
+    </ReleaseInfo>
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r372</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>- Automation: fixed bug in AddControlWidget
+   - Deprecated module types: Temperature, Fan, Thermostat
+   - Widgets: added localization support
+   - Widgets: added jkUtils widgets "Solar Altitude" and "Open Weather"
+   - WebService: added automatic charset encoding
+   - X10: fixed reception of RF X10 Security codes
+   - UI: added user selectable icons for modules
+   - ZWave: updated PepperOne database
+   - Other minor fixes and improvements</ReleaseNote>
+      <ReleaseDate>2014-05-13T00:11:23.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r371_372_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r374</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>  - Added voice control lingo files for french and spanish locales
+  - Voice control now supports scenarios activation (start/run/stop/break followed by program name)
+  - Re-enabled voice control from web UI
+  - Scheduler can now evaluate expressions with parentheses
+  - Statistics now consider any value starting with "Meter." as valid for counter facility
+  - Source code editor now has better formatted error messages
+  - Added PullUp and PullDown resistor configuration to Raspberry GPIO and MCP23017 programs (MCP23017 PullUp only)
+  - Fixed bug in Level Memory program
+  - Fixed bug in Interconnections (remote modules control was working only for few minutes)
+  - Fixed bug in Server Sent Events (bad IDs formatting)
+  - Fixed minor bug in UpdateChecker</ReleaseNote>
+      <ReleaseDate>2014-06-01T19:48:32.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r372_374_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>    
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r375</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>- Fixed "Unknown/Unsupported" module error appearing in some browsers (eg. SmartTV web browser)
+   - Fixed parsing error in scheduler expressions with blank characers before/after parentheses
+   - Added Scheduler.DateTime comparison operators to Wizard programs' condition
+   - Newly added scheduler events are now set to enabled by default
+   - Fixed Solar Altitude "NaN" bug</ReleaseNote>
+      <ReleaseDate>2014-06-22T15:41:09.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r374_375_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>    
+    
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r394</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - adapted UPnP media widgets to the new UI
+      - added Events History enable/disable in Maintenance section
+      - added log file download in Maintenance section
+      - added Web Caching enable/disable in Maintenance section
+      - updated Raspberry#.IO library
+      - added service Restart button in Maintenance section
+      - Macro Recording now records UPnP commands as well
+      - other minor fixes</ReleaseNote>
+      <ReleaseDate>2014-07-08T11:43:59.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r375_394_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r395</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - fixed a bug in Philips Hue and Fibaro RGBW apps</ReleaseNote>
+      <ReleaseDate>2014-07-09T15:48:09.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r394_395_update.zip/download</DownloadUrl>
+      <RequireRestart>false</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r398</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - added device/resolution/fps parameters to camera driver
+      - added gdlib3 support to CameraCaptureV4L wrapper
+      - added MQTT app (Automation/Interconnections)
+      - added MQTT support to NetHelper class
+      - added unhalded exceptions trapping to main program</ReleaseNote>
+      <ReleaseDate>2014-07-13T14:15:16.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r395_398_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r400</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - Updated MQTT Network app. Now with virtual modules and remote module control</ReleaseNote>
+      <ReleaseDate>2014-07-14T21:36:47.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r398_400_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r403</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - Some optimizations to the X10, ZWave and SerialPort driver libraries
+      - Added "Sunrise Colors Scenario" sample script for Philips Hue lights
+      - Added module settings popup to the control page
+      - Fixed occasional crash in shutdown/restart process
+      - Added "Raspberry Pi Camera" resolution modes to camera driver (up to 5Mpx and 90fps)
+      - Fixed bug in Interconnections (decimal fields serialization issue in SignalEvent)
+      - Fixed bug in web service file caching</ReleaseNote>
+      <ReleaseDate>2014-07-29T11:48:41.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r400_403_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r403fix</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - Fixed bug in ZWaveLib "node add" and "node remove" functions</ReleaseNote>
+      <ReleaseDate>2014-07-31T21:31:59.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r403fix_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r409</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - Some fixes to X10 driver
+      - Added experimental driver for Insteon PLM 2413 (serial and usb)
+      - Fixed ZWaveLib "node add" and "node remove" functions</ReleaseNote>
+      <ReleaseDate>2014-08-11T11:00:10.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r403_409_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r411</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   - Fixed IR send bug   
+      - Added command "Control.Level.Adjust" to XTenLib, to fix synchronization issues with dimmers w/ level memory
+      - Added "Simulate Only" option to "Level Memory" program (to be used with LW12 dimmers)</ReleaseNote>
+      <ReleaseDate>2014-08-14T08:32:49.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r409_411_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+    <ReleaseInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Name>HomeGenie</Name>
+      <Version>1.00 beta r415</Version>
+      <Description>Latest public release.</Description>
+      <ReleaseNote>   !! ***** CLEAR WEB BROWSER CACHE AFTER THIS UPDATE ***** !!
+      - Added Eden Sensor Board programs to Raspberry Pi section (http://homegenie.it/docs/diy/eden.php)
+      - Improved Program Editor UI
+      - Updated Python and Ruby engines to latest IronLanguages release
+      - Fixed bug in Z-Wave discovery (issue #12)
+      - Added user definable API commands to Wizard script editor (issue #28)
+      - Added remote node prefix to domain of remotely Interconnected modules (issue #26)
+      - Added last updated time info to sensor widget
+      - Updated Jint Javascript Engine (r353-4) - now accepting hg.Program.Setup and other methods using Action delegates
+      - Updated RaspberrySharp-IO
+      - Fixed occasional bug in reading temperature value from HSM-100 sensor</ReleaseNote>
+      <ReleaseDate>2014-10-02T12:20:33.0000Z</ReleaseDate>
+      <DownloadUrl>http://sourceforge.net/projects/homegenie/files/_updates/HomeGenie_1_00_beta_r411_415_update.zip/download</DownloadUrl>
+      <RequireRestart>true</RequireRestart>
+    </ReleaseInfo>
+
+</ArrayOfReleaseInfo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>34</Address>
+  <Name>Weather Underground Widget</Name>
+  <Group>Devices and Things</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>// this Setup delegate will be executed once, when program become active
+Program.Setup(()=&gt;
+{
+    // list the program as custom weather widget
+    Program.AddControlWidget( "weather/wunderground/conditions" );
+    
+    // set input fields parameters
+    // &lt;field_name&gt;, &lt;default_value&gt;, &lt;description&gt;
+    Program.AddInputField("Location", "autoip", "City name");
+    Program.AddInputField("Language", "EN", "Language");
+    Program.AddInputField("ApiKey", "818a7a60268c5703", "Weather Underground Key");
+    
+    // initialize widget program parameters
+    Program.Parameter("Astronomy.Sunset").Value = "";
+    Program.Parameter("Astronomy.Sunrise").Value = "";
+    Program.Parameter("Conditions.City").Value = "";
+    Program.Parameter("Conditions.TemperatureC").Value = "";
+    Program.Parameter("Conditions.TemperatureF").Value = "";
+    Program.Parameter("Conditions.DisplayLocation").Value = "";
+    Program.Parameter("Conditions.IconUrl").Value = "";
+    Program.Parameter("Conditions.Description").Value = "";    
+});
+//
+return true; // execute "Code To Run"
+</ScriptCondition>
+  <ScriptSource>// change this to your location name if "autoip" doesn't work
+string location = Program.InputField("Location").Value;
+string language = Program.InputField("Language").Value;
+string apikey = Program.InputField("ApiKey").Value;
+//
+try
+{
+  string webserviceurl = "http://api.wunderground.com/api/" + apikey + "/geolookup/astronomy/lang:" + language + "/q/" + location + ".json";
+  var astronomydata = Net.WebService(webserviceurl).GetData();
+  
+  int sunrise_hour = int.Parse(astronomydata.moon_phase.sunrise.hour.ToString());
+  int sunrise_minute = int.Parse(astronomydata.moon_phase.sunrise.minute.ToString());
+  int sunset_hour = int.Parse(astronomydata.moon_phase.sunset.hour.ToString());
+  int sunset_minute = int.Parse(astronomydata.moon_phase.sunset.minute.ToString());
+  
+  Program.Parameter("Astronomy.Sunset").Value = sunset_hour.ToString("D2") + ":" + sunset_minute.ToString("D2");
+  Program.Parameter("Astronomy.Sunrise").Value = sunrise_hour.ToString("D2") + ":" + sunrise_minute.ToString("D2");
+  
+  webserviceurl = "http://api.wunderground.com/api/" + apikey + "/geolookup/conditions/lang:" + language + "/q/" + location + ".json";
+  var weatherdata = Net.WebService(webserviceurl).GetData();
+  
+  string city = weatherdata.location.city;
+  string country = weatherdata.location.country;
+  string country_iso3166 = weatherdata.location.country_iso3166; // eg. IT,US,NL,UK,AU,CH,DE...
+  string temperaturec = weatherdata.current_observation.temp_c;
+  string temperaturef = weatherdata.current_observation.temp_f;
+  string display_location = weatherdata.current_observation.display_location.full;
+  string weather_text = weatherdata.current_observation.weather;
+  string icon = weatherdata.current_observation.icon;
+  string icon_url = weatherdata.current_observation.icon_url;
+  string wind_dir = weatherdata.current_observation.wind_dir;
+  string wind_kph = weatherdata.current_observation.wind_kph;
+  string pressure_mb = weatherdata.current_observation.pressure_mb;
+  string feelslike_c = weatherdata.current_observation.feelslike_c;
+  string feelslike_f = weatherdata.current_observation.feelslike_f;
+  string UV = weatherdata.current_observation.UV;
+  string precip_1hr_metric = weatherdata.current_observation.precip_1hr_metric;
+  
+  Program.Parameter("Conditions.City").Value = city;
+  Program.Parameter("Conditions.Country").Value = country;
+  Program.Parameter("Conditions.CountryCode").Value = country_iso3166;
+  Program.Parameter("Conditions.TemperatureC").Value = temperaturec;
+  Program.Parameter("Conditions.TemperatureF").Value = temperaturef;
+  Program.Parameter("Conditions.DisplayLocation").Value = display_location;
+  Program.Parameter("Conditions.Description").Value = weather_text;
+  Program.Parameter("Conditions.IconUrl").Value = icon_url;
+  Program.Parameter("Conditions.Status").Value = icon; // eg. cloudy, sunny, etc..
+  Program.Parameter("Conditions.WindDirection").Value = wind_dir;
+  Program.Parameter("Conditions.WindKph").Value = wind_kph;
+  Program.Parameter("Conditions.PressureMb").Value = pressure_mb;
+  Program.Parameter("Conditions.FeelsLikeC").Value = feelslike_c;
+  Program.Parameter("Conditions.FeelsLikeF").Value = feelslike_f;
+  Program.Parameter("Conditions.UV").Value = UV;
+  Program.Parameter("Conditions.PrecipitationHourMetric").Value = precip_1hr_metric;
+  
+} 
+catch (Exception e) 
+{
+  
+  Console.WriteLine( e.StackTrace );
+  
+}
+
+Pause(60 * 30); // pause 30 minutes  before next check
+</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features />
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

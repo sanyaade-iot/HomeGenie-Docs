@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>16</Address>
+  <Name>Dimmers Level Memory</Name>
+  <Group>Features</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>true</IsEnabled>
+  <ScriptCondition>Program.Setup( () =&gt; {
+	Program.AddFeature("Dimmer", "HomeGenie.LevelMemory", "Recall last light level when switched on");
+});
+// this program will be running in background
+return true;
+</ScriptCondition>
+  <ScriptSource>
+// We want to do further processing whenever a module changes 
+When.ModuleParameterChange( (module, property) =&gt; {
+  
+	// store the Status.MemoryLevel value for recalling last light dimmer level
+	// when switched on
+  	if (module.HasFeature("HomeGenie.LevelMemory") &amp;&amp; module.IsOfDeviceType("Dimmer") &amp;&amp; property.Name == "Status.Level")
+	{
+  		var level = module.Parameter("Status.Level");
+  		var lastlevel = module.Parameter("Status.LastLevel");
+		var memory = module.Parameter("Status.MemoryLevel");
+		//
+        if (level.DecimalValue != lastlevel.DecimalValue)
+        {
+            bool justswitchedon = (lastlevel.DecimalValue == 0 &amp;&amp; level.DecimalValue &gt; 0);
+          	if (justswitchedon)
+            {
+                // we now can recall last recorder memory level and
+                // set current level to memory level if different
+                if (level.DecimalValue != memory.DecimalValue &amp;&amp; memory.DecimalValue &gt; 0)
+                {
+                  Pause(1);
+                  module.Level = (memory.DecimalValue * 100);
+                }
+            }
+            if (level.DecimalValue &gt; 0) 
+            {
+                memory.Value = level.Value;
+            } 
+        }
+        // store last level, that is used to determine if module has been switched on/off
+		lastlevel.Value = level.Value;
+    }
+
+    return null;
+  
+});
+
+Program.GoBackground();</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>true</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features>
+    <ProgramFeature>
+      <ForDomains />
+      <ForTypes>Dimmer</ForTypes>
+      <Property>HomeGenie.LevelMemory</Property>
+      <Description>Recall last light level when switched on</Description>
+    </ProgramFeature>
+  </Features>
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>

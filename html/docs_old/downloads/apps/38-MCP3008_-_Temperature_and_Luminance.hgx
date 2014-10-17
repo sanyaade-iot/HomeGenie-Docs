@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ProgramBlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Domain>HomeAutomation.HomeGenie.Automation</Domain>
+  <Address>38</Address>
+  <Name>MCP3008 - Temperature and Luminance</Name>
+  <Group>Raspberry Sharp</Group>
+  <Type>CSharp</Type>
+  <IsEnabled>false</IsEnabled>
+  <ScriptCondition>// this Setup delegate will be executed once, when program become active
+Program.Setup(()=&gt;
+{
+  
+  // set the widget that will display this program data (the temperature,luminance).
+  Program.AddControlWidget("homegenie/generic/temperature");
+  
+  // set a configuration parameter
+  Program.AddInputField("PollFrequency", "10", "Pause between updates (seconds)");
+  
+  // initialize program parameters
+  Program.Parameter("Sensor.Temperature").Value = "";
+  Program.Parameter("Sensor.Luminance").Value = "";
+  
+  // it makes program to respond to webservices calls:
+  // - http://&lt;hg_address&gt;/api/EmbeddedSystems.Raspberry/MCP3008/Sensor.Temperature
+  When.WebServiceCallReceived("EmbeddedSystems.Raspberry/MCP3008/Sensor.Temperature", ( args ) =&gt; 
+  {
+    return "{ 'ResponseValue' : '" + Program.Parameter("Sensor.Temperature").Value + "' }";
+  });
+  // - http://&lt;hg_address&gt;/api/EmbeddedSystems.Raspberry/MCP3008/Sensor.Luminance
+  When.WebServiceCallReceived("EmbeddedSystems.Raspberry/MCP3008/Sensor.Luminance", ( args ) =&gt; 
+  {
+    return "{ 'ResponseValue' : '" + Program.Parameter("Sensor.Luminance").Value + "' }";
+  });
+  
+}); // end program setup
+
+return true;
+</ScriptCondition>
+  <ScriptSource>//
+// adapted from https://github.com/raspberry-sharp/raspberry-sharp-io/blob/master/Test.Gpio.MCP3008/Program.cs
+// see also http://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/overview
+// Connected pins are the same as in the original sample.
+
+const decimal voltage = 3.3m;
+//
+Func&lt;decimal, decimal&gt; 
+ConvertToCelsius = (volts) =&gt; {
+	return 100 * volts - 50;
+};
+Func&lt;decimal, decimal, decimal&gt;
+ConvertToLux = (volts, referenceVoltage) =&gt; {
+    // See http://learn.adafruit.com/photocells/using-a-photocell
+    // and http://www.emant.com/316002.page    
+    decimal resistor = 10000;
+    decimal luxRatio = 500000;
+    return volts != 0 ? luxRatio * volts / (resistor * (referenceVoltage - volts)) : 0;
+};
+
+var adcClock = ConnectorPin.P1Pin12.ToProcessor();
+var adcMiso = ConnectorPin.P1Pin16.ToProcessor();
+var adcMosi = ConnectorPin.P1Pin18.ToProcessor();
+var adcCs = ConnectorPin.P1Pin22.ToProcessor();
+
+using (var adcConnection = new Mcp3008SpiConnection(adcClock, adcCs, adcMiso, adcMosi, voltage))
+{
+  // MCP3008 Sample: Reading temperature on Channel 0 and luminosity on Channel 1
+  
+  while (Program.IsEnabled)
+  {
+    
+    var temperature = ConvertToCelsius( adcConnection.Read(Mcp3008Channel.Channel0) );
+    var lux = ConvertToLux( adcConnection.Read(Mcp3008Channel.Channel1), voltage );
+    
+    Program.Parameter("Sensor.Temperature").Value = String.Format("{0,5:0.0}", temperature );
+    Program.Parameter("Sensor.Luminance").Value = String.Format("{0,5:0.0}", lux );
+    
+    double pauseseconds = double.Parse(Program.InputField("PollFrequency").Value);
+    Pause( pauseseconds * 60 ); // pause 
+    
+  }
+}
+</ScriptSource>
+  <ScriptErrors />
+  <ConditionType>OnTrue</ConditionType>
+  <Conditions />
+  <Commands />
+  <IsRunning>false</IsRunning>
+  <IsEvaluatingConditionBlock>true</IsEvaluatingConditionBlock>
+  <Features />
+  <LastConditionEvaluationResult>true</LastConditionEvaluationResult>
+</ProgramBlock>
