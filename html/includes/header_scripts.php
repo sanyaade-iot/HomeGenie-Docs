@@ -1,13 +1,13 @@
     <meta http-equiv="Content-Language" content="en-us" />
-    <meta name="description" content="HomeGenie, Open Source Home Automaton in the Internet of Things era">
-    <meta name="keywords" lang="en-us" content="Home Automation,Z-Wave,X10,Insteon,RFXCom,LightwaveRF,Lightwave RF,433Mhz,RF,IR,ZWave,Raspberry Pi,GPIO,SPI,I2C,Weather,Macro,Scenarios,Automation,UPnP,DLNA,Control Point,Media Receiver,Aeon Labs,Fibaro,Marmitek,CM15,Z-Stick,CM11,SC9000,Philips Hue,Sensors,Voice Control,Open Source,Open Source Home Automation,Internet of Things,IoT,Server,Gateway">
-    <meta name="author" content="Gene" >
+    <meta name="description" content="HomeGenie, Open Source Home Automaton in the Internet of Things era" />
+    <meta name="keywords" lang="en-us" content="Home Automation,Z-Wave,X10,Insteon,RFXCom,LightwaveRF,Lightwave RF,433Mhz,RF,IR,ZWave,Raspberry Pi,GPIO,SPI,I2C,Weather,Macro,Scenarios,Automation,UPnP,DLNA,Control Point,Media Receiver,Aeon Labs,Fibaro,Marmitek,CM15,Z-Stick,CM11,SC9000,Philips Hue,Sensors,Voice Control,Open Source,Open Source Home Automation,Internet of Things,IoT,Server,Gateway" />
+    <meta name="author" content="Gene" />
     <meta name="google-site-verification" content="_B_iK7-KURRqCweR_D3DTnNaoPKyMOVosPqipeCfw8o" />
-    <meta name="google-translate-customization" content="4465409ca18a218d-3c5a592dabcc0b15-gd17525dd79b50c62-1c">
+    <meta name="google-translate-customization" content="e090a2a8a9bcc892-a965e978c7b5fb69-g63de0038b6f55b4a-15" />    
     <meta name="msvalidate.01" content="1432A2FA39281300FF64B7B49144A0D1" />
-    <meta itemprop="applicationCategory" content="Open Source Home Automation Server IoT">
-    <meta itemprop="operatingSystem" content="Windows, Linux, Mac">
-    <meta itemprop="image" content="http://www.homegenie.it/images/homegenie_friends.png">
+    <meta itemprop="applicationCategory" content="Open Source Home Automation Server IoT" />
+    <meta itemprop="operatingSystem" content="Windows, Linux, Mac" />
+    <meta itemprop="image" content="http://www.homegenie.it/images/homegenie_friends.png" />
     <script src="/js/jquery-1.8.0.min.js"></script>
     <script src="/js/config.js"></script>
     <script src="/js/skel.min.js"></script>

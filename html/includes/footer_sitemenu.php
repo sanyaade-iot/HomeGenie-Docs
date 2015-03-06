@@ -5,6 +5,6 @@
                 <li><a href="/index.php">Homepage</a></li>
                 <li><a href="/download.php">Download</a></li>
                 <li><a href="/docs/index.php">Documentation</a></li>
-                <li><a href="http://sourceforge.net/projects/homegenie">Source Code</a></li>
+                <li><a href="http://github.com/genielabs/HomeGenie">Source Code</a></li>
               </ul>
              </section>

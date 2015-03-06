@@ -34,6 +34,8 @@
             <div class="3u">
               <!-- Left Sidebar -->
               <?php include $_SERVER['DOCUMENT_ROOT'].'/docs/includes/menu_usersguide.php'; ?>
+              <!-- Latest Forum Posts -->
+              <?php include $_SERVER['DOCUMENT_ROOT'].'/docs/includes/menu_forumlink.php'; ?>
             </div>
             <div class="6u skel-cell-important">
               <!-- Main Content -->
@@ -90,7 +92,7 @@
                   <li>
                     <h3>Speech synthesys and Voice control</h3>
                   </li>
-                  <li>
+                  <li>google recaptcha
                     <h3>Localization</h3>
                     English, Italian, German, Spanish, French, Netherlands.
                     Other languages can by added by creating a simple JSON file.
@@ -126,6 +128,12 @@
                     GPIO, SPI, I2C programming using an event driven model
                   </li>
                   <li>
+                    <h3>Integrated <a href="http://arduino.cc/" target="_blank">Arduino&trade;</a> Programmer</h3>
+                    Create your own sensors and smart devices using just a web browser and integrate them into HomeGenie with the easiness of a <a rel="iframe-800-520" class="pirobox_gall1" title="HomeGenie Arduino programming" href="http://www.youtube.com/embed/2hFbufXEJb0?autoplay=1">
+                      <img src="/docs/images/playvideo.png" />&nbsp;blink
+                    </a> ;)
+                  </li>
+                  <li>
                     <h3>Service clustering via events forwarding and MQTT</h3>
                   </li>
                   <li>
@@ -139,7 +147,8 @@
 
               <?php include $_SERVER['DOCUMENT_ROOT'].'/docs/includes/menu_diyrpi.php'; ?>
 
-              <?php include $_SERVER['DOCUMENT_ROOT'].'/docs/includes/menu_forumlink.php'; ?>
+              <a href="http://www.seeedstudio.com/depot/LinkIt-ONEBackorder-p-2017.html" target="_blank"><img src="images/linkit_one_200.jpg"></a>
+              <br /><br /><br />
 
             </div>
           </div>

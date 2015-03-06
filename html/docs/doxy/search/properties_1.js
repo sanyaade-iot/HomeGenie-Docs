@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['groups',['Groups',['../d1/db5/class_home_genie_1_1_automation_1_1_scripting_1_1_modules_manager.html#a8be4b742030053ca73d3bd1140f2c978',1,'HomeGenie::Automation::Scripting::ModulesManager']]]
+  ['endofline',['EndOfLine',['../a00009.html#ab843427ba747b934c97225374eca65e5',1,'HomeGenie.Automation.Scripting.SerialPortHelper.EndOfLine()'],['../a00011.html#ab843427ba747b934c97225374eca65e5',1,'HomeGenie.Automation.Scripting.TcpClientHelper.EndOfLine()'],['../a00012.html#ab843427ba747b934c97225374eca65e5',1,'HomeGenie.Automation.Scripting.UdpClientHelper.EndOfLine()']]]
 ];

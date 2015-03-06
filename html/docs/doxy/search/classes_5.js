@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['tcpclienthelper',['TcpClientHelper',['../d9/d20/class_home_genie_1_1_automation_1_1_scripting_1_1_tcp_client_helper.html',1,'HomeGenie::Automation::Scripting']]]
+  ['schedulerhelper',['SchedulerHelper',['../a00008.html',1,'HomeGenie::Automation::Scripting']]],
+  ['serialporthelper',['SerialPortHelper',['../a00009.html',1,'HomeGenie::Automation::Scripting']]],
+  ['settingshelper',['SettingsHelper',['../a00010.html',1,'HomeGenie::Automation::Scripting']]]
 ];

@@ -177,6 +177,13 @@
 			font-weight: bold;
 		}
 		
+		#content h4
+		{
+			color: #222222;
+			font-size: 0.9em;
+			font-weight: bold;
+		}
+		
 		#content a
 		{
 			color: #3388ff;

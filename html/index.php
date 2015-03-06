@@ -39,7 +39,7 @@
             </div>
             <div class="6u">
               <!-- Banner Image --> 
-              <span class="transparent-feature-image"><img alt="Open Source Home Automation" src="images/banner.png"></span> 
+              <span class="transparent-feature-image"><img alt="Open Source Home Automation" src="images/banner<?php if ((date('n') == 12 && date('j') >= 20) || (date('n') == 1 && date('j') < 7)) echo '_xmas'; ?>.png"></span> 
             </div>
           </div>
         </div>
@@ -115,8 +115,8 @@
                   <h2>About this project</h2>
                   <h3>Make all things speak a common language</h3>
                   <br>
-                  Designed on a multi-standard basis, HomeGenie can interface to
-                  X10, Insteon, Z-Wave, Philips Hue, UPnP, RFXCom devices, communicate with
+                  Designed on a multi-standard basis, HomeGenie can interface to various devices as
+                  X10, Insteon, Z-Wave, Philips Hue, UPnP, RFXCom, KNX, communicate with
                   external web services and integrate all of this into a common
                   automation enviroment. So even if based on different
                   standards, inside HG, all "modules" can be controlled and
@@ -145,7 +145,7 @@
                   <li>Raspberry Pi GPIO, SPI, I2C programming</li>
                   <li>Localization (En, It, De, Sp, Fr, Ne)</li>
                   <li>Voice Control</li>
-                  <li>Runs on Windows, Linux, Mac, Raspberry</li>
+                  <li>Runs on Windows, Linux, Mac, Raspberry Pi</li>
                 </ul>
               </section>
             </div>

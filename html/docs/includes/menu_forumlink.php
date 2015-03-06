@@ -38,8 +38,8 @@
                                 $topics = ssi_recentTopics(10, null, null, 'array');
 	                            foreach ($topics as $topic)
 		                            echo '<li style="height:70px;font-size:11pt;line-height:13pt;"><a style="color:black" href="', $topic['href'], '">', 
-                                            '<div style="color:green">', substr($topic['subject'], 0, 40), '</div>',
-                                            '<div>', substr(strip_tags($topic['preview']), 0, 80), '...</div>',
+                                            '<div style="height:18px;color:green;width:240px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">', substr($topic['subject'], 0, 100), '</div>',
+                                            '<div style="height:36px;width:240px;overflow:hidden;text-overflow:ellipsis">', substr(strip_tags($topic['preview']), 0, 200), '</div>',
                                             '<div style="color:gray">', $topic['time'], '</div>',
                                         '</a></li>';
 	                            unset($topics);

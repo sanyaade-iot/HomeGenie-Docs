@@ -4,18 +4,22 @@
                 </header>
                 <ul class="link-list">
                   <li>
-                      <a href="/docs/diy/jeannie.php">
-                          <span style="font-family:'Lobster',sans-serif;font-size:24pt">Jeannie</span>
-                          <br />
-                          Home Automation HUB and IR Gateway
-                      </a>
-                  </li>
-                  <li>
                       <a href="/docs/diy/eden.php">
                           <span style="font-family:'Lobster',sans-serif;font-size:24pt">Eden</span>
                           <br />
                           Programmable Wi-Fi Thermostat and Universal IR Controller
                       </a>
+			<br />
+			<img src="/docs/diy/images/eden/eden_v1_oled.gif" width="200"><br /><br />
+                  </li>
+                  <li>
+                      <a href="/docs/diy/jeannie.php">
+                          <span style="font-family:'Lobster',sans-serif;font-size:24pt">Jeannie</span>
+                          <br />
+                          Home Automation HUB and IR Gateway
+                      </a>
+			<br />
+			<img src="/docs/diy/images/jeannie/bpi_enclosure_00.jpg" width="200">
                   </li>
                   <!--li>
                       <a style="color:lightgray" href="http://tinkersphere.com/arduino-compatible-components/318-8-channel-25-5-v-relay-module-arduino-raspberry-pi-compatible.html" target="_blank">
@@ -30,6 +34,8 @@
                           <br />
                           2.8" TFT Touch Panel for Home Automation
                       </a>
+                	<br />
+			<img src="/images/hg_smarttouch.png">
                   </li>
                   <!--li>
                       <a style="color:lightgray">
@@ -40,5 +46,4 @@
                   </li-->
 
                 </ul>
-                <img src="/images/hg_smarttouch.png">
               </section>

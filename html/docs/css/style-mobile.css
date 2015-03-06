@@ -195,6 +195,13 @@ body, input, textarea, select
 			font-weight: bold;
 		}
 		
+		#content h4
+		{
+			color: #222222;
+			font-size: 0.7em;
+			font-weight: bold;
+		}
+		
 		#content a
 		{
 			color: #6666ff;

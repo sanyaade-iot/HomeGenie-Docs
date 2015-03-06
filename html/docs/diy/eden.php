@@ -37,288 +37,337 @@
                 </header>
 
                 <p>
-		This project is based on <a style="font-weight:bold" href="#edenpcb">Eden Board</a>, a <i>Multipurpose Sensor Board</i> for <u>Raspberry and Banana Pi</u>.<br />
-		By using Eden board on a Pi computer with HomeGenie, we'll get <span  style="font-family:'Lobster',sans-serif">Eden</span>, a <span style="font-weight:bold">Wi-Fi Thermostat and Universal IR Controller</span>.
-		<br />
-		But it's not just that since Eden Board can be easily expanded...
+		<span  style="font-family:'Lobster',sans-serif">Eden</span> is a DIY project based on <span style="font-weight:bold">HomeGenie</span> software and <span style="font-weight:bold">Eden Sensor Board</span>, a <i>Multipurpose Sensor Board</i> for <u>Raspberry Pi</u>.<br />
+		Its main purpose is to implement a programmable wi-fi thermostat and universal IR transceiver, but also other functionalities can be easily added by using various connectors and a small prototype area available on the board.
 		</p>
 
-		    <div align="center">
-                    <object width="700" height="480"><param name="movie" value="//www.youtube.com/v/j6S7nWi6oKg?hl=it_IT&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/j6S7nWi6oKg?hl=it_IT&amp;version=3" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		    </div>
-
-	<br />
+	        <p align="center">
+			<a title="Eden V1 with Ssd 1306 Oled" href="images/eden/eden_v1_oled.gif" rel="gallery" class="pirobox_gall"><img src="images/eden/eden_v1_oled.gif" alt="" width="500"></a>
+		</p>
 
 		<h3>Component Listing</h3>
                 <ul style="list-style-type:square;padding-left:30px;">
-                        <li><a href="http://www.bananapi.org/" target="_blank">Banana Pi</a> or <a href="http://www.raspberrypi.org/" target="_blank">Raspberry Pi</a> model A + power supply</li>
+                        <li><a href="http://www.raspberrypi.org/" target="_blank">Raspberry Pi</a> (model A or A+ suggested) with 5V power supply</li>
                         <li><a href="http://elinux.org/RPi_USB_Wi-Fi_Adapters" target="_blank">Wi-Fi USB adapter</a></li>
-                        <li><a href="#edenpcb">Eden Board</a> and <a href="/download.php">HomeGenie SDCard</a></li>
+                        <li><a href="#edenpcb">Eden Sensor Board</a> and <a href="/download.php">HomeGenie SDCard</a></li>
                 </ul>
 
 
 		<h3>Features you'll get out of the box</h3>
 		<ul style="list-style-type:square;padding-left:30px;">
-		<li>Temperature sensing</li>
+		<li>Temperature and Luminance sensing</li>
 		<li>Programmable IR transceiver for controlling AC/AV and other IR controllable devices</li>
 		<li>External enviroment data sensing (using third party internet service)</li>
 		<li>"Wizard" scripting for creating scenarios and other automation tasks</li>
 		<li>Builtin statistics, user interface and automation engine powered by HomeGenie</li>
 		<li><u>Modular and expandible</u> hardware system (see Eden Board specifications below)</li>
 		<li>Web Service API</li>
-		<li>Web based IDE with a friendly user interface for easy GPIO/I2C/SPI/UART programming, using your favourite language (C#, Javascript, Python, Ruby)</li>
+		<li>Web based IDE with a friendly user interface for easy <span style="font-weight:bold">GPIO</span>/<span style="font-weight:bold">I2C</span>/<span style="font-weight:bold">SPI</span>/<span style="font-weight:bold">UART</span>/<span style="font-weight:bold">Arduino&trade;</span> programming, using your favourite language (C#, Javascript, Python, Ruby)</li>
 		</ul>
-
-
-                <br />
-<pre style="background-color:#ffffdd;font-family:courier;font-size:10pt;width:710px;margin-left:40px;padding:20px;line-height:11pt">DISCLAIMER
-Please note that any project details posted on this site are supplied for general
-interest only, rather than as contructional guidelines, and no guarantee is given about
-their correctness or reliability. Anyone trying to build from them is responsible for
-their own safety and for any possible resulting damage to property or to persons.</pre>
-<br />
 
 		<a name="edenpcb"></a>
+		<h3>About Eden Sensor Board</h3>
 		<p>
-
-		<h2 style="font-family:'Lobster',sans-serif">Eden Board</h2>
-		
-		Current version of Eden Board is designed with through-hole components and a simplified circuit. Less components = cheap = easy DIY assembling.<br />
-		Early testing results show stable readings from analog input channels and about 1%-2% value displacement when loading the 3v3 line with extra components.
-		In most situations this can be acceptable.<br />
-		A complete version of the board circuit might also include a precise voltage input for the MCP3008 VREF line (eg. by using LM4040DTB-300GT3), a couple of capacitor for the TMP36 and perhaps
-		most of the components as SMD.
-
+		We can choose between two models of this board. The first one (v1) is based on <a href="http://www.adafruit.com/product/856" target="_blank">MCP3008 ADC</a>, while the second one (v2) is based on <a href="http://arduino.cc/en/Main/ArduinoBoardProMini" target="_blank">Arduino&trade; Pro Mini 3V</a>.<br/>
+		Click on the link below to find out more:
 		</p>
-
-		<p>
-
-		<h3>Features</h3>
 		<ul style="list-style-type:square;padding-left:30px;">
-		<li>Temperature sensor</li>
-		<li>Infrared transceiver</li>
-		<li>Grove compatible I2C connector</li>
-		<li>Grove compatible digital I/O connector (1 or 2 wires) with selectable 3V3/5V line</li>
-		<li>UEXT compatible connector</li>
-		<li>7 analog channels</li>
-		<li>6 GPIOs</li>
-		<li>15x9 prototyping area</li>
+		<li><a href="eden_v1.php" style="font-weight:bold;font-size:18px">Eden Sensor Board v1 (MCP3008 version)</a></li>
+		<li><a href="eden_v2.php" style="font-weight:bold;font-size:18px">Eden Sensor Board v2 (Arduino&trade; Pro Mini version)</a></li>
 		</ul>
 
-                </p>
-
-                <p align="center">
-			<a title="Eden Board: PCB" href="images/eden/eden_pcb.png" rel="gallery" class="pirobox_gall"><img src="images/eden/eden_pcb.png" alt="" height="300"></a>
-                </p>
-
-		<p>
-
-		<h3>Component Listing</h3>
-                <ul style="list-style-type:square;padding-left:30px;">
-                        <li>Eden Board printed circuit 5.62 cm × 5.62 cm - 94.77 cm² (<a href="http://sourceforge.net/projects/homegenie/files/testing/">Download Etchable PDF/Gerber archive</a>)</li>
-                        <li><span style="font-weight:bold">IC1</span>&nbsp; 10-bit ADC,SPI,8-ch,MCP3008-I/P</li>
-                        <li><span style="font-weight:bold">D1</span>&nbsp; TSOP4838 38Khz</li>
-                        <li><span style="font-weight:bold">D2</span>&nbsp; TSAL5300 IR Emitter Photodiode 5mm, 940nm 22deg</li>
-                        <li><span style="font-weight:bold">T1</span>&nbsp; TMP36GT9Z</li>
-                        <li><span style="font-weight:bold">R1</span>&nbsp; 10Kohm 0.5W resistor</li>
-                        <li><span style="font-weight:bold">C1</span>&nbsp; 1uF ceramic capacitor</li>
-                        <li><span style="font-weight:bold">Q1</span>&nbsp; BC337-25RL1G</li>
-                        <li><span style="font-weight:bold">CN1</span>&nbsp; Stacking Header (2x13) Extra Tall</li>
-                        <li><span style="font-weight:bold">P1</span>&nbsp; N2510-6002RB Header (2x5)</li>
-                        <li><span style="font-weight:bold">P2</span>&nbsp; 1x4 2.54 male connector</li>
-                        <li><span style="font-weight:bold">P3</span>&nbsp; 1x4 2.54 male connector</li>
-                        <li><span style="font-weight:bold">P4</span>&nbsp; 1x3 2.54 male connector</li>
-                        <li><span style="font-weight:bold">J1</span>&nbsp; 1x3 2.54 male connector</li>
-                </ul>
-
-
-
-		</p>
-
-
-                <p align="center">
-			<a title="Eden: LCD display and Relay modules" href="images/eden/eden_lcd.jpg" rel="gallery" class="pirobox_gall"><img src="images/eden/eden_lcd.jpg" alt="" height="300"></a>
-                </p>
-
-		<p>
-		Already many add-on modules can be connected to Eden by using CN1, P1, P2, P4 connectors.
-		<br/>
-		For example we could just plug in this <a href="http://www.seeedstudio.com/depot/Grove-Relay-p-769.html" target="_blank">Grove Relay Module</a> to use Eden as actuator for a boiler.
-		<br/>
-		These are some of the modules that can be plugged to Eden:<br>
 		
+		<a name="edenoled"></a>
+		<h3>SSD1306 OLED Display with control buttons</h3>
+		<p>
+		SSD1306 is a cheap OLED display that can be connected to Raspberry Pi I2C port (or Arduino I2C if you are using Eden V2).<br />
+                By also adding 4 buttons, we can create a menu on the display and navigate/control the various options by using the buttons.</br>
+		These are connected with one end to the 3V3, and the other end to GPIO#22, GPIO#23, GPIO#24, GPIO#25. Also the internal pull-down resistor is enabled on these pins.<br />
+                The video below will show how to setup all of this in few steps with HomeGenie:
 		</p>
 
-                <ul style="list-style-type:square;padding-left:30px;">
-		<li><a href="http://www.seeedstudio.com/wiki/Grove" target="_blank">Grove modules</a></li>
-		<li><a href="http://www.olimex.com/Products/Modules/" target="_blank">Olimex UEXT modules</a></li>
-		<li><a href="http://razberry.z-wave.me/" target="_blank">RaZberry</a></li>
-		</ul>
-	
-		
+		    <div align="center">
+                    <object width="700" height="480"><param name="movie" value="//www.youtube.com/v/8tsISYytX1Y?hl=it_IT&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/8tsISYytX1Y?hl=it_IT&amp;version=3" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+		    </div>
+<br />
 		<p>
-		Also adding custom components and functionalities is possible, by using the prototyping area.
+		The program that control the menu and the navigation with the 4 buttons is entirely written in Javascript!
+		This program source code is included in HomeGenie and can be customized by using built-in HomeGenie Program Editor.<br/>
+		To get started with HomeGenie automation programming see <a href="http://www.homegenie.it/docs/automation_introduction.php">Automation Programming Introduction</a>.<br/>
+		Just to give you an idea on how easy it is, we are posting its code below (hopefully at this point you already know how automation programming works in HomeGenie =)): 
+		<pre class="csharp">// Get a reference to the OLED object
+var oled = hg.Modules.InDomain("Components.Ssd1306").WithAddress("0");
+
+// Get a reference to other programs of which data will be displayed on the OLED screen
+var thermostat = hg.Modules.WithName("Generic Thermostat").Get();
+var setPoint = thermostat.Parameter("Thermostat.SetPoint.Heating");
+var securitySystem = hg.Modules.WithName("Security Alarm System").Get();
+var securityArmed = securitySystem.Parameter("HomeGenie.SecurityArmed");
+
+// Global state variables
+var currentContext = '';
+var displayMode = 'normal';
+var lastButton = '';
+var startPressTs = new Date().getTime();
+// This system wide parameter is used to prevent other apps
+// from writing on the OLED screen  when the menu is open
+hg.Settings.Parameter('EdenDisplay.MenuMode').Value = 'OFF';
+
+// Menu screens
+
+function menuShowMain()
+{
+  oled.Command("Oled.GoTo").Execute("0/3");
+  oled.Command("Oled.DrawText").Execute("----[ MENU ]----");
+  oled.Command("Oled.GoTo").Execute("0/4");
+  oled.Command("Oled.DrawText").Execute("1 Set Point/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/5");
+  oled.Command("Oled.DrawText").Execute("2 Security/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/6");
+  oled.Command("Oled.DrawText").Execute("3 Invert Display/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/7");
+  oled.Command("Oled.DrawText").Execute("4 Exit/LEFT");
+}
+
+function menuShowSetPoint()
+{
+  oled.Command("Oled.GoTo").Execute("0/3");
+  oled.Command("Oled.DrawText").Execute("/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/4");
+  oled.Command("Oled.DrawText").Execute("Set Point:/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/5");
+  oled.Command("Oled.DrawText2").Execute(setPoint.Value + "/CENTER");
+  oled.Command("Oled.GoTo").Execute("0/7");
+  oled.Command("Oled.DrawText").Execute("2 + 3 -   EXIT 4/CENTER");  
+}
+
+function menuShowSecurity()
+{
+  var level = securitySystem.Parameter("Status.Level");
+  oled.Command("Oled.GoTo").Execute("0/3");
+  oled.Command("Oled.DrawText").Execute("/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/4");
+  oled.Command("Oled.DrawText").Execute("Security:/LEFT");
+  oled.Command("Oled.GoTo").Execute("0/5");
+  oled.Command("Oled.DrawText2").Execute((securityArmed.DecimalValue > 0 || level.DecimalValue > 0 ? "ARMED" : "DISARMED") + "/CENTER");
+  oled.Command("Oled.GoTo").Execute("0/7");
+  if (securityArmed.DecimalValue > 0 || level.DecimalValue > 0)
+  {
+    oled.Command("Oled.DrawText").Execute("2 DISARM  EXIT 4/CENTER");
+  }
+  else
+  {
+    oled.Command("Oled.DrawText").Execute("2 ARM     EXIT 4/CENTER");
+  }
+}
+
+// Context switch functions
+
+function setContext(ctx)
+{
+  currentContext = ctx;
+  hg.Settings.Parameter('EdenDisplay.MenuMode').Value = 'ON';
+  switch(ctx)
+  {
+    case 'main':
+      menuShowMain();
+      break;
+    case 'setpoint':
+      menuShowSetPoint();
+      break;
+    case 'security':
+      menuShowSecurity();
+      break;
+    case 'energysaving':
+      menuShowEnergySaving();
+      break;
+    case 'exit':
+      oled.Command("Oled.GoTo").Execute("0/3");
+      oled.Command("Oled.DrawText").Execute("/CENTER");
+      oled.Command("Oled.GoTo").Execute("0/4");
+      oled.Command("Oled.ShowLogo").Execute();
+      hg.Pause(2);
+      hg.Settings.Parameter('EdenDisplay.MenuMode').Value = 'OFF';
+      break;
+  }
+}
+
+function setContextInput(input)
+{
+  switch (input)
+  {
+    case '1': // BUTTON #1
+      switch (currentContext)
+      {
+        case 'main':
+          setContext('setpoint');
+          break;
+      }
+      break;
+    case '2': // BUTTON #2
+      switch (currentContext)
+      {
+        case 'main':
+          setContext('security');
+          break;
+        case 'setpoint':
+          thermostat.Command("Thermostat.SetPointSet").Execute("Heating/" + (setPoint.DecimalValue + 1));
+          menuShowSetPoint();
+          break;
+        case 'security':
+          if (securityArmed.DecimalValue == 0)
+          {
+            securitySystem.Command("Control.On").Execute();
+          }
+          else
+          {
+            securitySystem.Command("Control.Off").Execute();
+          }
+          menuShowSecurity();
+          break;
+      }
+      break;
+    case '3': // BUTTON #3
+      switch (currentContext)
+      {
+        case 'main':
+          if (displayMode == 'normal')
+          {
+            displayMode = 'inverse';
+            oled.Command("Oled.DisplayInvert").Execute();
+          }
+          else
+          {
+            displayMode = 'normal';
+            oled.Command("Oled.DisplayNormal").Execute();
+          }
+          break;
+        case 'setpoint':
+          thermostat.Command("Thermostat.SetPointSet").Execute("Heating/" + (setPoint.DecimalValue - 1));
+          menuShowSetPoint();
+          break;
+      }
+      break;
+    case '4': // BUTTON #4
+      switch (currentContext)
+      {
+        case 'main':
+          setContext('exit');
+          break;
+        default:
+          setContext('main');
+          break;
+      }
+      break;
+  }
+
+}
+
+hg.When.ModuleParameterChange(function(module, parameter){
+  if (module.Instance.Domain == 'RaspberryPi.Gpio' && parameter.Is("Status.Level") && parameter.DecimalValue > 0)
+  {
+    // A button was pressed, store the timestamp
+    startPressTs = new Date().getTime();
+    if (currentContext == '')
+    {
+      // A long press of 3 seconds will open the settings menu
+      var duration = 0;
+      while (duration < 3 && parameter.DecimalValue > 0)
+      {
+          hg.Pause(1);
+          duration++;
+      }
+      if (duration >= 3) setContext('main');
+      return true;
+    }
+    //
+    // The input is only processed when the settings menu is opened
+    switch (module.Instance.Address)
+    {
+        // BUTTON #1 pressed
+      case 'GPIO22': 
+        setContextInput('1');
+        break;
+        // BUTTON #2 pressed
+      case 'GPIO23':
+        setContextInput('2');
+        break;
+        // BUTTON #3 pressed
+      case 'GPIO24':
+        setContextInput('3');
+        break;
+        // BUTTON #4 pressed
+      case 'GPIO25':
+        setContextInput('4');
+        break;
+    }
+  }
+  else if (module.Instance.Domain == 'RaspberryPi.Gpio' && parameter.Is("Status.Level") && parameter.DecimalValue == 0)
+  {
+    // A button was released
+    var currentTs = new Date().getTime();
+    if (currentContext == 'exit')
+    {
+      currentContext = '';
+    }
+    else if (currentContext == '' && currentTs - startPressTs < 3000) // 3 seconds
+    {
+      // We are outside the settings menu, so
+      // the buttons functionality is to toggle scenarios/devices
+      lastButton = '';
+      switch (module.Instance.Address)
+      {
+          // BUTTON #1 released
+        case 'GPIO22': 
+          lastButton = '1';
+          break;
+          // BUTTON #2 released
+        case 'GPIO23': 
+          lastButton = '2';
+          break;
+          // BUTTON #3 released
+        case 'GPIO24': 
+          lastButton = '3';
+          break;
+          // BUTTON #4 released
+        case 'GPIO25':
+          lastButton= '4';
+          break;
+      }
+      if (lastButton != '')
+      {
+        hg.Modules.WithFeature("EdenDisplay.ToggleButton." + lastButton).Toggle();
+        var program = hg.Program.InputField("EdenDisplay.ButtonProgram." + lastButton).Value;
+        // scenarios are specified in the form <program_id_or_name>/<options>
+        if (program != '')
+        {
+          // it is a scenario
+          var options = '';
+          if (program.lastIndexOf('/') > 0) 
+          {
+            options = program.substring(program.lastIndexOf('/') + 1);
+            program = program.substring(0, program.lastIndexOf('/'));
+          }
+          hg.Program.Run(program, options);
+        }
+      }
+    }
+    // Reset long press timestamp
+    startPressTs = new Date().getTime();
+  }
+  else if (parameter.Is("HomeGenie.SecurityArmed") && currentContext == "security")
+  {
+    // update security menu
+    menuShowSecurity();
+  }
+  return true;
+});
+
+hg.Program.GoBackground();</pre>
 		</p>
 
-		<p>
 
-		        <div align="center">
-				<span style="font-weight:bold">Video:</span> Eden Board Recipe #1: Grove Chainable RGB Led<br />
-	<object width="700" height="480"><param name="movie" value="//www.youtube.com/v/an5XDQ5dFLI?version=3&amp;hl=it_IT"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/an5XDQ5dFLI?version=3&amp;hl=it_IT" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		        </div>
-
-			<br />
-
-		        <div align="center">
-				<span style="font-weight:bold">Video:</span> Eden Board Recipe #2: Grove Led Bar<br />
-	<object width="700" height="480"><param name="movie" value="//www.youtube.com/v/JbFSiN3H2ig?version=3&amp;hl=it_IT"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/JbFSiN3H2ig?version=3&amp;hl=it_IT" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		        </div>
-
-			<br />
-
-		        <div align="center">
-				<span style="font-weight:bold">Video:</span> Eden Board Recipe #3: DHT-11 Temperature and Humidity Sensor <br />
-	<object width="700" height="480"><param name="movie" value="//www.youtube.com/v/Q0KtT9Lo6Ro?version=3&amp;hl=it_IT"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/Q0KtT9Lo6Ro?version=3&amp;hl=it_IT" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		        </div>
-
-			<br />
-
-		        <div align="center">
-				<span style="font-weight:bold">Video:</span> Eden Board Recipe #4: Breadboard and Analog Luminance Sensor <br />
-	<object width="700" height="480"><param name="movie" value="//www.youtube.com/v/UWbW2lubykA?version=3&amp;hl=it_IT"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/UWbW2lubykA?version=3&amp;hl=it_IT" type="application/x-shockwave-flash" width="700" height="480" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		        </div>
-
-		</p>
-
-		<p>
-
-			<h2 style="font-family:'Lobster',sans-serif">Eden lite</h2>
-				
-			<p>The following is a light (and very cheap) version of Eden. It is using Raspberry Pi model A and gives temperature and humidity sensing + IR receiver and three status leds.</p>
-
-		        <div align="center"><img title="DIY HomeGenie Server" alt="DIY HomeGenie Server" src="/images/hg_r1l.png"></div>
-
-			<h3>Component Listing</h3>
-		        <ul style="list-style-type:square;padding-left:30px;">
-		                <li><span style="font-weight:bold">1</span>&nbsp; <a href="http://www.raspberrypi.org/" target="_blank">Raspberry Pi</a> model A + power supply</li>
-		                <li><span style="font-weight:bold">1</span>&nbsp; <a href="http://elinux.org/RPi_USB_Wi-Fi_Adapters" target="_blank">Wi-Fi USB adapter</a></li>
-		                <li><span style="font-weight:bold">1</span>&nbsp; BitBang Proto-Plate with 2x13 Way Header Socket</li>
-		                <li><span style="font-weight:bold">3</span>&nbsp; 330 ohm resistors</li>
-		                <li><span style="font-weight:bold">3</span>&nbsp; leds (red, yellow, green)</li>
-		                <li><span style="font-weight:bold">1</span>&nbsp; Infrared Receiver TSOP 4838 38Khz</li>
-		                <li><span style="font-weight:bold">1</span>&nbsp; DHT-11 temperature and humidity sensor</li>
-		        </ul>
-		
-                </p>
-
-                <h3>1: Installing HomeGenie on Raspberry Pi</h3>
-                 
-                <p>
-                    For instructions about installing HomeGenie on Raspberry Pi, see the <a href="../download.php">Download</a> section.
-                    <br />
-                    <span style="font-style:italic">Please also read the following article about securing your Raspberry Pi SD card installation: <br />
-                        &nbsp;&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&nbsp;<a href="http://mattwilcox.net/archives/setting-up-a-secure-home-web-server-with-raspberry-pi/" target="_blank">SETTING UP A (REASONABLY) SECURE HOME WEB-SERVER WITH RASPBERRY PI</a>
-                    </span>
-                </p>
-              
-                <h3>2: Assembling Eden daughter board for Raspberry Pi</h3>
-                <p>
-
-                    <div align="center">
-                        <a title="HomeGenie Board: Components" href="images/diy/hg_components.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/hg_components.jpg" alt="" width="200"></a>                    </div>
-                </p>
-
-                <h3>2.1: Socket and Leds</h3>
-                <p>
-					First we'll solder the header socket pins to the proto-board. The proto-board used here it's a <a href="http://www.bitbang.co.uk/proto-plate_1_1.html" target="_blank">BitBang Proto-Plate</a>, but we can eventually use any other board for Raspberry Pi.<br>
-					To get some tip about soldering the header socket, see the first part of <a href="http://learn.adafruit.com/adafruit-prototyping-pi-plate/solder-it" target="_blank">Adafruit tutorial</a>.
-				</p>
-                <div align="center">
-                    <a title="HomeGenie Board: Step 2.1" href="images/diy/step01.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step01.jpg" alt="" width="300"></a>                    <a title="HomeGenie Board: Step 2" href="images/diy/step02.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step02.jpg" alt="" width="300"></a>                </div>
-
-                <br />
-                <h3>2.2: Wiring leds to GPIO pins</h3>
-                <p>
-					Each led will have one pin connected to the GND and the other one to a GPIO pin. The green led will use RaspberryPi <span style="font-weight:bold">GPIO21</span>, 
-                    while the yellow one will use <span style="font-weight:bold">GPIO22</span>.
-					The proto-plate used here has a GND pad close to the leds footprints, so connecting the two 330 ohm resistors will not require any additional wires.
-					For connecting to the GPIOs, we'll use a green wire to the green led and a yellow wire to the yellow led.<br/>
-					Once done that, we are ready for a first test. We can plug the HomeGenie board and power up our Raspberry Pi for testing.
-					In order to enable leds, we have to activate the "HomeGenie Leds" APP under <span style="font-weight:bold">Configure->Automation->RaspberrySharp</span> menu in HomeGenie.
-				</p>
-
-                <div align="center">
-                    <a title="HomeGenie Board: Step 2.2" href="images/diy/step03.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step03.jpg" alt="" width="300"></a>                </div>
-
-                <br />
-                <h3>2.3: Infrared Receiver</h3>
-                <p>
-					To setup the IR receiver sensor, first we have to activate the power pads on the Proto-Plate. BitBang protoplate comes with two power pads. We can see them in the pictures below.<br>
-					The first one is below the TV-OUT connector and it's labeled "PWR". The other one is on the left side. To activate these power pads we have to wire the +3V out to the power pad on the left. 
-					As we can see in the picture we've a little red wire connecting them (see it in the upper left corner of the board).<br>
-					Also we will connect a wire from the power pad on the left to the red led.<br>
-					Next we'll solder the IR receiver and connect its output pin (1) to <span style="font-weight:bold">GPIO18</span> pin on Raspberry Pi. This is the pink wire in the picture, going from GPIO18 to the IR receiver pin 1.<br>
-				</p>
-
-                <div align="center">
-                    <a title="HomeGenie Board: Step 2.3" href="images/diy/step04.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step04.jpg" alt="" width="300"></a>                </div>
-
-                <p>
-					If we look at the bottom side of the board (see the picture below), we'll also see how the GND and the +3V is connected to the IR receiver pin 2 and pin 3 respectively.
-					The GND is taken from the GND pad on the proto-plate (see the black wire). While the +3V is taken from the power pad that is below the tv-out (red cable).
-					Finally we'll have a 330 ohm resistor going from IR receiver output pin to the red led.
-					For more details about how to connect a IR receiver to Raspberry Pi see <a href="http://learn.adafruit.com/using-an-ir-remote-with-a-raspberry-pi-media-center/hardware" target="_blank">Adafruit IR Tutorial</a>.
-				</p>
-
-		<p>
-
-		</p>
-
-                <div align="center">
-					<a title="HomeGenie Board: Step 2.3" href="images/diy/step06.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step06.jpg" alt="" width="300"></a>
-                </div>
-
-				<p>
-					Once done that, we are ready to plug the HG board on the Raspberry Pi and test it with HomeGenie. 
-					We can now activate IR transceiving in HomeGenie from the <i>"Configure->System and Interfaces"</i> menu and start controlling lights and things by using IR.
-				</p>
-
-				<h3>2.4: Temperature and Humidity Sensor</h3>
-				<p>
-					If we want HomeGenie also sense the temperature and the humidity, we can add a DHT-11 sensor to HomeGenie board.
-					Connect the pin 4 of the DHT-11 sensor to the GND pad, as we did for the IR receiver. Next we can connect the DHT-11 data pin 2 (the blue wire) to the Raspberry Pi <span style="font-weight:bold">CK0</span> (GPIO4) pin.
-					And one last step, we connect the pin 1 of the DHT-11 to the +3V on the proto-plate power pad (red wire, as done with IR sensor).<br>
-				jafar	To activate the DHT-11 in HomeGenie, go to the <i>"Configure->Automation->RaspberrySharp"</i> menu and enable the "DHT-11" APP.<br>
-					For more details about how to connect DHT-11 sensor to Raspberry Pi see <a href="http://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview" target="_blank">Adafruit DHT-11 Tutorial</a>.
-				</p>
-
-                <div align="center">
-					<a title="HomeGenie Board: Step 2.4" href="images/diy/step07.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step07.jpg" alt="" height="200"></a>
-					<a title="HomeGenie Board: Step 2.4" href="images/diy/step08.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step08.jpg" alt="" height="200"></a>
-                </div>
-
-				<h3>3: Choosing a case</h3>
-				<p>
-				When choosing a case consider that it must have enough room for fitting the protoplate along with its components. The 
-				<a href="http://www.ebay.it/itm/230873922897?ssPageName=STRK:MEWNX:IT&_trksid=p3984.m1497.l2649" target="_blank">iBox for the Raspberry Pi</a> is the one shown in the following pictures.
-				</p>
-
-
-
-                <div align="center">
-					<a title="HomeGenie Board: Putting all togheter" href="images/diy/step09.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step09.jpg" alt="" height="200"></a>
-					<a title="HomeGenie Board: Final result" href="images/diy/step10.jpg" rel="gallery" class="pirobox_gall"><img src="images/diy/step10.jpg" alt="" height="200"></a>
-                </div>
-
-
-				<!--h3>4: Installing Eden firmware</h3>
-				<p>[[ WORK IN PROGRESS - DRAFT ]]</p>
-				<p>
-				Eden firmware is a standard HomeGenie configuration backup archive (with preconfigured gpio relay etc..) that we can download from the following link:
-                                <br />eden_firmware_backup-v1.zip
-				</p-->
-
-<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
 
                 <?php include $_SERVER['DOCUMENT_ROOT'].'/donate_link.php'; ?>
 
