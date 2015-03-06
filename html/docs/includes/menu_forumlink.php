@@ -26,9 +26,11 @@
 	                background: red;
                 }
                 </style>
+
+		<?php /*
                 <section style="padding-left:0;padding-right:0">    
                     <h2 style="padding-left:30px">Lastest Topics</h2>
-                
+
                     <?php $_SERVER['is_cli'] = true; ?>
                     <?php include $_SERVER['DOCUMENT_ROOT'].'/forum/SSI.php'; ?>
                     <div class="vticker-wrapper" align="center">
@@ -56,7 +58,6 @@
 
                 </section>
             
-            
                 <script type="text/javascript">
                     $(document).ready(function () {
 
@@ -68,14 +69,9 @@
                             height: 'auto',
                             visible: 3,
                             mousePause: 1
-                            /*,controls: {
-                                up: '.up',
-                                down: '.down',
-                                toggle: '.toggle',
-                                stopText: 'Stop !!!'
-                            }*/
                         }).data('easyTicker');
 
                     });
                 </script>    
-                    
+                */ ?>
+
